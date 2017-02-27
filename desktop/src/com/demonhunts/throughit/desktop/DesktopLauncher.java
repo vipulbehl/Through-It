@@ -7,6 +7,9 @@ import com.demonhunts.throughit.ThroughIt;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.title="Through It";
+        config.width=272;
+        config.height=408;
 		new LwjglApplication(new ThroughIt(), config);
 	}
 }
