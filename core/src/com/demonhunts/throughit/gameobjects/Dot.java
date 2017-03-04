@@ -2,6 +2,7 @@ package com.demonhunts.throughit.gameobjects;
 
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Circle;
 
 public class Dot {
 
@@ -14,6 +15,7 @@ public class Dot {
     private int height;
     private boolean direction;
     private int a;
+    private Circle boundingCircle;
 
     public Dot(float x, float y, int width, int height){
         this.width = width;
@@ -23,6 +25,15 @@ public class Dot {
         acceleration = new Vector2(0,460);
         direction = true;
         a=5;
+        boundingCircle = new Circle();
+    }
+
+    public Circle getBoundingCircle() {
+        return boundingCircle;
+    }
+
+    public void setBoundingCircle(Circle boundingCircle) {
+        this.boundingCircle = boundingCircle;
     }
 
     public void update(float delta) {
@@ -38,6 +49,7 @@ public class Dot {
                 velocity.y = 200;
             }
             position.add(velocity.cpy().scl(delta));
+            boundingCircle.set(position.x + 9, position.y + 6, 6.5f);
         }
     }
 

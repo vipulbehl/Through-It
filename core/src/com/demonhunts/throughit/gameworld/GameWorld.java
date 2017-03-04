@@ -18,6 +18,10 @@ public class GameWorld {
     public void update(float delta){
         dot.update(delta);
         scroller.update(delta);
+        if (scroller.collides(dot)) {
+            // Clean up on game over
+            scroller.stop();
+        }
     }
 
     public ScrollHandler getScroller() {
