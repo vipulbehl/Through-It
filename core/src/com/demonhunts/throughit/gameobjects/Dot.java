@@ -49,8 +49,9 @@ public class Dot {
                 velocity.y = 200;
             }
             position.add(velocity.cpy().scl(delta));
-            boundingCircle.set(position.x + 9, position.y + 6, 6.5f);
+
         }
+        boundingCircle.set(position.x + 9, position.y + 6, 6.5f);
     }
 
     public void onClick() {
