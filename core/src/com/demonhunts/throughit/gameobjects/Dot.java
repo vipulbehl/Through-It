@@ -13,6 +13,7 @@ public class Dot {
     private int width;
     private int height;
     private boolean direction;
+    private int a;
 
     public Dot(float x, float y, int width, int height){
         this.width = width;
@@ -21,24 +22,27 @@ public class Dot {
         velocity = new Vector2(0,0);
         acceleration = new Vector2(0,460);
         direction = true;
+        a=5;
     }
 
     public void update(float delta) {
         //Main algorithm to control dot's movement
-        if(direction){
-            velocity.add(0,-5);
-        }
-        else{
-            velocity.add(0,5);
-        }
+        if(a==0) {
+            if (direction) {
+                velocity.add(0, -5);
+            } else {
+                velocity.add(0, 5);
+            }
 //        velocity.add(acceleration.cpy().scl(delta));
-        if (velocity.y > 200) {
-            velocity.y = 200;
+            if (velocity.y > 200) {
+                velocity.y = 200;
+            }
+            position.add(velocity.cpy().scl(delta));
         }
-        position.add(velocity.cpy().scl(delta));
     }
 
     public void onClick() {
+        a=0;
         if(direction)
             direction = false;
         else
