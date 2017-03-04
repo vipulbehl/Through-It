@@ -15,6 +15,7 @@ public class Dot {
     private int height;
     private boolean direction;
     private int a;
+    private int b ;
     private Circle boundingCircle;
 
     public Dot(float x, float y, int width, int height){
@@ -23,8 +24,9 @@ public class Dot {
         position = new Vector2(x,y);
         velocity = new Vector2(0,0);
         acceleration = new Vector2(0,460);
-        direction = true;
+        direction = false;
         a=5;
+        b=5;
         boundingCircle = new Circle();
     }
 
@@ -40,8 +42,18 @@ public class Dot {
         //Main algorithm to control dot's movement
         if(a==0) {
             if (direction) {
+                if(b==1)
+                {
+                    velocity.add(0,-100);
+                    b=5;
+                }
                 velocity.add(0, -5);
             } else {
+                if(b==1)
+                {
+                    velocity.add(0,100);
+                    b=5;
+                }
                 velocity.add(0, 5);
             }
 //        velocity.add(acceleration.cpy().scl(delta));
@@ -56,6 +68,7 @@ public class Dot {
 
     public void onClick() {
         a=0;
+        b=1;
         if(direction)
             direction = false;
         else
