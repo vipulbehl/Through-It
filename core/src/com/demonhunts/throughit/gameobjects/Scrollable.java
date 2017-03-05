@@ -4,7 +4,6 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Scrollable {
 
-    // Protected is similar to private, but allows inheritance by subclasses.
     protected Vector2 position;
     protected Vector2 velocity;
     protected int width;
@@ -22,13 +21,11 @@ public class Scrollable {
     public void update(float delta) {
         position.add(velocity.cpy().scl(delta));
 
-        // If the Scrollable object is no longer visible:
         if (position.x + width < 0) {
             isScrolledLeft = true;
         }
     }
 
-    // Reset: Should Override in subclass for more specific behavior.
     public void reset(float newX) {
         position.x = newX;
         isScrolledLeft = false;
@@ -38,7 +35,6 @@ public class Scrollable {
         velocity.x = 0;
     }
 
-    // Getters for instance variables
     public boolean isScrolledLeft() {
         return isScrolledLeft;
     }

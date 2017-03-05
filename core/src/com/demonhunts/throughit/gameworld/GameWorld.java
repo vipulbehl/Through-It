@@ -19,7 +19,6 @@ public class GameWorld {
         dot.update(delta);
         scroller.update(delta);
         if (scroller.collides(dot)) {
-            // Clean up on game over
             scroller.stop();
         }
     }

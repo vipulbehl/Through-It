@@ -10,11 +10,10 @@ public class Dot {
     private Vector2 velocity;
     private Vector2 acceleration;
 
-    private float rotation;//This can be removed as our object will not rotate
     private int width;
     private int height;
     private boolean direction;
-    private int a;
+    private boolean clickCheck;
     private int b ;
     private Circle boundingCircle;
 
@@ -25,7 +24,7 @@ public class Dot {
         velocity = new Vector2(0,0);
         acceleration = new Vector2(0,460);
         direction = false;
-        a=5;
+        clickCheck=false;
         b=5;
         boundingCircle = new Circle();
     }
@@ -40,7 +39,7 @@ public class Dot {
 
     public void update(float delta) {
         //Main algorithm to control dot's movement
-        if(a==0) {
+        if(clickCheck) {
             if (direction) {
                 if(b==1)
                 {
@@ -67,7 +66,7 @@ public class Dot {
     }
 
     public void onClick() {
-        a=0;
+        clickCheck=true;
         b=1;
         if(direction)
             direction = false;
@@ -90,9 +89,5 @@ public class Dot {
 
     public float getHeight() {
         return height;
-    }
-
-    public float getRotation() {
-        return rotation;
     }
 }

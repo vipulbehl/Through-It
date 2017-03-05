@@ -30,8 +30,6 @@ public class GameRenderer {
     private Pipe pipe1, pipe2, pipe3;
 
     private TextureRegion bg, grass;
-    private Animation birdAnimation;
-    private TextureRegion birdMid, birdDown, birdUp;
     private TextureRegion skullUp, skullDown, bar;
 
     private int midPointY;
@@ -73,35 +71,19 @@ public class GameRenderer {
         // Draw Dirt
         shapeRenderer.setColor(147 / 255.0f, 80 / 255.0f, 27 / 255.0f, 1);
         shapeRenderer.rect(0, midPointY + 77, 136, 52);
-
-        // End ShapeRenderer
         shapeRenderer.end();
 
-        // Begin SpriteBatch
         batcher.begin();
-        // Disable transparency
-        // This is good for performance when drawing images that do not require
-        // transparency.
         batcher.disableBlending();
         batcher.draw(AssetLoader.bg, 0, midPointY + 23, 136, 43);
-
-        // The bird needs transparency, so we enable that again.
         batcher.enableBlending();
-
-        // Draw bird at its coordinates. Retrieve the Animation object from
-        // AssetLoader
-        // Pass in the runTime variable to get the current frame.
         batcher.draw(AssetLoader.bird,dot.getX(),dot.getY(),dot.getWidth(),dot.getHeight());
 
         drawGrass();
-
-        // 2. Draw Pipes
         drawPipes();
         batcher.enableBlending();
-
-        // 3. Draw Skulls (requires transparency)
         drawSkulls();
-        // End SpriteBatch
+
         batcher.end();
     }
     private void initGameObjects() {
@@ -117,17 +99,12 @@ public class GameRenderer {
     private void initAssets() {
         bg = AssetLoader.bg;
         grass = AssetLoader.grass;
-        birdAnimation = AssetLoader.birdAnimation;
-        birdMid = AssetLoader.bird;
-        birdDown = AssetLoader.birdDown;
-        birdUp = AssetLoader.birdUp;
         skullUp = AssetLoader.skullUp;
         skullDown = AssetLoader.skullDown;
         bar = AssetLoader.bar;
     }
 
     private void drawGrass() {
-        // Draw the grass
         batcher.draw(grass, frontGrass.getX(), frontGrass.getY(),
                 frontGrass.getWidth(), frontGrass.getHeight());
         batcher.draw(grass, backGrass.getX(), backGrass.getY(),
@@ -135,9 +112,6 @@ public class GameRenderer {
     }
 
     private void drawSkulls() {
-        // Temporary code! Sorry about the mess :)
-        // We will fix this when we finish the Pipe class.
-
         batcher.draw(skullUp, pipe1.getX() - 1,
                 pipe1.getY() + pipe1.getHeight() - 14, 24, 14);
         batcher.draw(skullDown, pipe1.getX() - 1,
@@ -155,8 +129,6 @@ public class GameRenderer {
     }
 
     private void drawPipes() {
-        // Temporary code! Sorry about the mess :)
-        // We will fix this when we finish the Pipe class.
         batcher.draw(bar, pipe1.getX(), pipe1.getY(), pipe1.getWidth(),
                 pipe1.getHeight());
         batcher.draw(bar, pipe1.getX(), pipe1.getY() + pipe1.getHeight() + 45,
