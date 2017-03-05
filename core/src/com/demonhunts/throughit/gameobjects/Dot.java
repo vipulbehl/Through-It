@@ -8,13 +8,13 @@ public class Dot {
 
     private Vector2 position;
     private Vector2 velocity;
-    private Vector2 acceleration;
 
     private int width;
     private int height;
     private boolean direction;
     private boolean clickCheck;
-    private int b ;
+    private boolean sharpTurn;
+    private boolean initClick;
     private Circle boundingCircle;
 
     public Dot(float x, float y, int width, int height){
@@ -22,10 +22,10 @@ public class Dot {
         this.height = height;
         position = new Vector2(x,y);
         velocity = new Vector2(0,0);
-        acceleration = new Vector2(0,460);
         direction = false;
         clickCheck=false;
-        b=5;
+        sharpTurn=false;
+        initClick=true;
         boundingCircle = new Circle();
     }
 
@@ -39,23 +39,26 @@ public class Dot {
 
     public void update(float delta) {
         //Main algorithm to control dot's movement
+        if(clickCheck && initClick){
+            velocity.add(0,100);
+            initClick=false;
+        }
         if(clickCheck) {
             if (direction) {
-                if(b==1)
+                if(sharpTurn)
                 {
-                    velocity.add(0,-50);
-                    b=5;
+                    velocity.add(0,-200);
+                    sharpTurn=false;
                 }
                 velocity.add(0, -5);
             } else {
-                if(b==1)
+                if(sharpTurn)
                 {
-                    velocity.add(0,50);
-                    b=5;
+                    velocity.add(0,200);
+                    sharpTurn=false;
                 }
                 velocity.add(0, 5);
             }
-//        velocity.add(acceleration.cpy().scl(delta));
             if (velocity.y > 200) {
                 velocity.y = 200;
             }
@@ -67,12 +70,11 @@ public class Dot {
 
     public void onClick() {
         clickCheck=true;
-        b=1;
+        sharpTurn=true;
         if(direction)
             direction = false;
         else
             direction = true;
-//        velocity.y = -140;
     }
 
     public float getX() {

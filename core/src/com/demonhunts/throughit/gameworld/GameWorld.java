@@ -1,7 +1,5 @@
 package com.demonhunts.throughit.gameworld;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Rectangle;
 import com.demonhunts.throughit.gameobjects.ScrollHandler;
 import com.demonhunts.throughit.gameobjects.Dot;
 

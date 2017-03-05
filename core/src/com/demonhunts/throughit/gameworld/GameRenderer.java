@@ -11,8 +11,6 @@ import com.demonhunts.throughit.helpers.AssetLoader;
 import com.demonhunts.throughit.gameobjects.ScrollHandler;
 import com.demonhunts.throughit.gameobjects.Pipe;
 import com.demonhunts.throughit.gameobjects.Grass;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 
@@ -30,7 +28,7 @@ public class GameRenderer {
     private Pipe pipe1, pipe2, pipe3;
 
     private TextureRegion bg, grass;
-    private TextureRegion skullUp, skullDown, bar;
+    private TextureRegion bar;
 
     private int midPointY;
     private int gameHeight;
@@ -77,12 +75,11 @@ public class GameRenderer {
         batcher.disableBlending();
         batcher.draw(AssetLoader.bg, 0, midPointY + 23, 136, 43);
         batcher.enableBlending();
-        batcher.draw(AssetLoader.bird,dot.getX(),dot.getY(),dot.getWidth(),dot.getHeight());
+        batcher.draw(AssetLoader.dot,dot.getX(),dot.getY(),dot.getWidth(),dot.getHeight());
 
         drawGrass();
         drawPipes();
         batcher.enableBlending();
-        drawSkulls();
 
         batcher.end();
     }
@@ -99,8 +96,6 @@ public class GameRenderer {
     private void initAssets() {
         bg = AssetLoader.bg;
         grass = AssetLoader.grass;
-        skullUp = AssetLoader.skullUp;
-        skullDown = AssetLoader.skullDown;
         bar = AssetLoader.bar;
     }
 
@@ -109,23 +104,6 @@ public class GameRenderer {
                 frontGrass.getWidth(), frontGrass.getHeight());
         batcher.draw(grass, backGrass.getX(), backGrass.getY(),
                 backGrass.getWidth(), backGrass.getHeight());
-    }
-
-    private void drawSkulls() {
-        batcher.draw(skullUp, pipe1.getX() - 1,
-                pipe1.getY() + pipe1.getHeight() - 14, 24, 14);
-        batcher.draw(skullDown, pipe1.getX() - 1,
-                pipe1.getY() + pipe1.getHeight() + 45, 24, 14);
-
-        batcher.draw(skullUp, pipe2.getX() - 1,
-                pipe2.getY() + pipe2.getHeight() - 14, 24, 14);
-        batcher.draw(skullDown, pipe2.getX() - 1,
-                pipe2.getY() + pipe2.getHeight() + 45, 24, 14);
-
-        batcher.draw(skullUp, pipe3.getX() - 1,
-                pipe3.getY() + pipe3.getHeight() - 14, 24, 14);
-        batcher.draw(skullDown, pipe3.getX() - 1,
-                pipe3.getY() + pipe3.getHeight() + 45, 24, 14);
     }
 
     private void drawPipes() {
