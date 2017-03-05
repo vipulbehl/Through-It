@@ -44,14 +44,14 @@ public class Dot {
             if (direction) {
                 if(b==1)
                 {
-                    velocity.add(0,-100);
+                    velocity.add(0,-50);
                     b=5;
                 }
                 velocity.add(0, -5);
             } else {
                 if(b==1)
                 {
-                    velocity.add(0,100);
+                    velocity.add(0,50);
                     b=5;
                 }
                 velocity.add(0, 5);
