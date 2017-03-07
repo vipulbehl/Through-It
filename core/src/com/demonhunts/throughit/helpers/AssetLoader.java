@@ -2,11 +2,13 @@ package com.demonhunts.throughit.helpers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class AssetLoader {
     public static Texture texture;
     public static TextureRegion bg, grass;
+    public static BitmapFont font;
 
     public static TextureRegion dot;
     public static TextureRegion bar;
@@ -15,6 +17,9 @@ public class AssetLoader {
 
         texture = new Texture(Gdx.files.internal("texture.png"));
         texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
+
+        font = new BitmapFont(Gdx.files.internal("text.fnt"));
+        font.getData().setScale(.50f,-.50f);
 
         dot = new TextureRegion(texture, 153, 0, 17, 12);
         dot.flip(false, true);
@@ -31,6 +36,7 @@ public class AssetLoader {
     }
 
     public static void dispose() {
+        font.dispose();
         texture.dispose();
     }
 }

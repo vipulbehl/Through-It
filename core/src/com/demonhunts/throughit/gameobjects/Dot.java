@@ -16,6 +16,7 @@ public class Dot {
     private boolean sharpTurn;
     private boolean initClick;
     private Circle boundingCircle;
+    private boolean isAlive;
 
     public Dot(float x, float y, int width, int height){
         this.width = width;
@@ -27,17 +28,15 @@ public class Dot {
         sharpTurn=false;
         initClick=true;
         boundingCircle = new Circle();
-    }
-
-    public Circle getBoundingCircle() {
-        return boundingCircle;
-    }
-
-    public void setBoundingCircle(Circle boundingCircle) {
-        this.boundingCircle = boundingCircle;
+        isAlive = true;
     }
 
     public void update(float delta) {
+        // Collision detection check with the ceiling
+        if (position.y < 0) {
+            position.y = 0;
+            velocity.y = 0;
+        }
         //Main algorithm to control dot's movement
         if(clickCheck && initClick){
             velocity.add(0,100);
@@ -75,6 +74,22 @@ public class Dot {
             direction = false;
         else
             direction = true;
+    }
+
+    public void die(){
+        isAlive = false;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public Circle getBoundingCircle() {
+        return boundingCircle;
+    }
+
+    public void setBoundingCircle(Circle boundingCircle) {
+        this.boundingCircle = boundingCircle;
     }
 
     public float getX() {

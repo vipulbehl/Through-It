@@ -13,6 +13,7 @@ public class Pipe extends Scrollable {
 
     public static final int VERTICAL_GAP = 45;
     private float groundY;
+    private boolean isScored;
 
     public Pipe(float x, float y, int width, int height, float scrollSpeed,
                 float groundY) {
@@ -20,6 +21,7 @@ public class Pipe extends Scrollable {
         r = new Random();
         barUp = new Rectangle();
         barDown = new Rectangle();
+        isScored = false;
 
         this.groundY = groundY;
     }
@@ -37,6 +39,15 @@ public class Pipe extends Scrollable {
     public void reset(float newX) {
         super.reset(newX);
         height = r.nextInt(90) + 15;
+        isScored = false;
+    }
+
+    public boolean isScored(){
+        return isScored;
+    }
+
+    public void setScored(boolean score){
+        this.isScored = score;
     }
 
     public Rectangle getBarUp() {

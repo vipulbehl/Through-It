@@ -81,6 +81,10 @@ public class GameRenderer {
         drawPipes();
         batcher.enableBlending();
 
+        String score = myWorld.getScore() + "";
+        AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2)
+                - (3 * score.length() - 1), 11);
+
         batcher.end();
     }
     private void initGameObjects() {
