@@ -76,6 +76,13 @@ public class Dot {
             direction = true;
     }
 
+    public void onRestart(int y) {
+        position.y = y;
+        velocity.x = 0;
+        velocity.y = 0;
+        isAlive = true;
+    }
+
     public void die(){
         isAlive = false;
     }

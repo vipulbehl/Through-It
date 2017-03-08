@@ -81,9 +81,21 @@ public class GameRenderer {
         drawPipes();
         batcher.enableBlending();
 
-        String score = myWorld.getScore() + "";
-        AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2)
-                - (3 * score.length() - 1), 11);
+
+        if (myWorld.isReady()) {
+            AssetLoader.font.draw(batcher, "Touch me", (136 / 2)
+                    - (42 - 1), 75);
+        } else {
+
+            if (myWorld.isGameOver()) {
+                AssetLoader.font.draw(batcher, "Game Over", 24, 55);
+                AssetLoader.font.draw(batcher, "Try again?", 24, 75);
+            }
+
+            String score = myWorld.getScore() + "";
+            AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2)
+                    - (3 * score.length() - 1), 11);
+        }
 
         batcher.end();
     }
