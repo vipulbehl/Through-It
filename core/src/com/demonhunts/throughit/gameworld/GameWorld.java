@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.demonhunts.throughit.gameobjects.ScrollHandler;
 import com.demonhunts.throughit.gameobjects.Dot;
+import com.demonhunts.throughit.helpers.AssetLoader;
 
 public class GameWorld {
 
@@ -98,6 +99,9 @@ public class GameWorld {
 
     public void addScore(int increment){
         score = score + increment;
+        if(AssetLoader.getHighScore() < score){
+            AssetLoader.setHighScore(score);
+        }
     }
 
     public ScrollHandler getScroller() {

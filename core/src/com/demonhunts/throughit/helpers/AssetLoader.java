@@ -1,6 +1,7 @@
 package com.demonhunts.throughit.helpers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -12,6 +13,8 @@ public class AssetLoader {
 
     public static TextureRegion dot;
     public static TextureRegion bar;
+
+    public static Preferences prefs;
 
     public static void load() {
 
@@ -33,10 +36,23 @@ public class AssetLoader {
         bar = new TextureRegion(texture, 136, 16, 22, 3);
         bar.flip(false, true);
 
+        prefs = Gdx.app.getPreferences("ThroughIt");
+        if(!prefs.contains("highScore")){
+            prefs.putInteger("highScore",0);
+        }
     }
 
     public static void dispose() {
         font.dispose();
         texture.dispose();
+    }
+
+    public static void setHighScore(int score){
+        prefs.putInteger("highScore",score);
+        prefs.flush();
+    }
+
+    public static int getHighScore(){
+        return prefs.getInteger("highScore");
     }
 }

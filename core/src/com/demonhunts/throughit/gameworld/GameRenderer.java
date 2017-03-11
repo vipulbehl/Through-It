@@ -90,11 +90,13 @@ public class GameRenderer {
             if (myWorld.isGameOver()) {
                 AssetLoader.font.draw(batcher, "Game Over", 24, 55);
                 AssetLoader.font.draw(batcher, "Try again?", 24, 75);
+                AssetLoader.font.draw(batcher,"HighScore",24,95);
+                String highScore = AssetLoader.getHighScore()+"";
+                AssetLoader.font.draw(batcher, "" + highScore, 80, 95);
             }
 
             String score = myWorld.getScore() + "";
-            AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2)
-                    - (3 * score.length() - 1), 11);
+            AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2) - (3 * score.length() - 1), 11);
         }
 
         batcher.end();
