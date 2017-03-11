@@ -32,11 +32,6 @@ public class Dot {
     }
 
     public void update(float delta) {
-        // Collision detection check with the ceiling
-        if (position.y < 0) {
-            position.y = 0;
-            velocity.y = 0;
-        }
         //Main algorithm to control dot's movement
         if(clickCheck && initClick){
             velocity.add(0,100);
@@ -81,6 +76,10 @@ public class Dot {
         velocity.x = 0;
         velocity.y = 0;
         isAlive = true;
+        direction = false;
+        clickCheck=false;
+        sharpTurn=false;
+        initClick=true;
     }
 
     public void die(){

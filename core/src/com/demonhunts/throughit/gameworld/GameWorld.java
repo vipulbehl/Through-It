@@ -10,6 +10,7 @@ public class GameWorld {
     private Dot dot;
     private ScrollHandler scroller;
     private Rectangle ground;
+    private Rectangle ceiling;
     private int score;
     public int midPointY;
 
@@ -24,6 +25,7 @@ public class GameWorld {
         dot = new Dot(33,midPointY-9,17,17);
         scroller = new ScrollHandler(this,midPointY + 66);
         ground = new Rectangle(0,midPointY+66,136,11);
+        ceiling = new Rectangle(0,0,136,0);
         this.midPointY = midPointY;
     }
 
@@ -60,6 +62,11 @@ public class GameWorld {
         }
 
         if(Intersector.overlaps(dot.getBoundingCircle(),ground)){
+            scroller.stop();
+            currentState = GameState.GAMEOVER;
+        }
+
+        if(Intersector.overlaps(dot.getBoundingCircle(),ceiling)){
             scroller.stop();
             currentState = GameState.GAMEOVER;
         }
