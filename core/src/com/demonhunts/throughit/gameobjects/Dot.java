@@ -1,6 +1,7 @@
 package com.demonhunts.throughit.gameobjects;
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Circle;
 
@@ -32,29 +33,25 @@ public class Dot {
     }
 
     public void update(float delta) {
-        //Main algorithm to control dot's movement
         if(clickCheck && initClick){
-            velocity.add(0,100);
+            velocity.add(0,110);
             initClick=false;
         }
         if(clickCheck) {
             if (direction) {
                 if(sharpTurn)
                 {
-                    velocity.add(0,-200);
+                    velocity.add(0,-220);
                     sharpTurn=false;
                 }
-                velocity.add(0, -5);
+                Gdx.app.log("Upwards : ",""+velocity.toString());
             } else {
                 if(sharpTurn)
                 {
-                    velocity.add(0,200);
+                    velocity.add(0,220);
                     sharpTurn=false;
                 }
-                velocity.add(0, 5);
-            }
-            if (velocity.y > 200) {
-                velocity.y = 200;
+                Gdx.app.log("Downwards : ",""+velocity.toString());
             }
             position.add(velocity.cpy().scl(delta));
 
