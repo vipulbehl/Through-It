@@ -12,7 +12,7 @@ import com.demonhunts.throughit.gameobjects.ScrollHandler;
 import com.demonhunts.throughit.gameobjects.Pipe;
 import com.demonhunts.throughit.gameobjects.Grass;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
+import com.demonhunts.throughit.helpers.FontHelper;
 
 
 public class GameRenderer {
@@ -33,6 +33,8 @@ public class GameRenderer {
     private int midPointY;
     private int gameHeight;
 
+    private FontHelper fontHelper;
+
     public GameRenderer(GameWorld world, int gameHeight, int midPointY){
         myWorld = world;
         this.midPointY = midPointY;
@@ -46,6 +48,8 @@ public class GameRenderer {
 
         batcher = new SpriteBatch();
         batcher.setProjectionMatrix(cam.combined);
+
+        fontHelper = new FontHelper();
         initGameObjects();
         initAssets();
     }
@@ -83,16 +87,16 @@ public class GameRenderer {
 
 
         if (myWorld.isReady()) {
-            AssetLoader.font.draw(batcher, "Touch me", (136 / 2)
-                    - (42 - 1), 75);
+            AssetLoader.font.draw(batcher, "Touch me", fontHelper.centerAlign("Touch me"), 75);
         } else {
 
             if (myWorld.isGameOver()) {
-                AssetLoader.font.draw(batcher, "Game Over", 24, 55);
-                AssetLoader.font.draw(batcher, "Try again?", 24, 75);
-                AssetLoader.font.draw(batcher,"HighScore",24,95);
+                AssetLoader.font.draw(batcher, "Game Over", fontHelper.centerAlign("Game Over"), 55);
+                AssetLoader.font.draw(batcher, "Try again?", fontHelper.centerAlign("Try again?"), 75);
+                AssetLoader.font.draw(batcher,"HighScore",fontHelper.centerAlign("HighScore"),95);
                 String highScore = AssetLoader.getHighScore()+"";
-                AssetLoader.font.draw(batcher, "" + highScore, 80, 95);
+                int highScoreWidth = (136/2)+(fontHelper.getWidth("HighScore")/2)+10;
+                AssetLoader.font.draw(batcher, highScore, highScoreWidth, 95);
             }
 
             String score = myWorld.getScore() + "";
