@@ -38,7 +38,6 @@ public class GameWorld {
                 break;
 
             case RUNNING:
-            default:
                 updateRunning(delta);
                 break;
         }
@@ -59,16 +58,19 @@ public class GameWorld {
 
         if (scroller.collides(dot)) {
             scroller.stop();
+            dot.die();
             currentState = GameState.GAMEOVER;
         }
 
         if(Intersector.overlaps(dot.getBoundingCircle(),ground)){
             scroller.stop();
+            dot.die();
             currentState = GameState.GAMEOVER;
         }
 
         if(Intersector.overlaps(dot.getBoundingCircle(),ceiling)){
             scroller.stop();
+            dot.die();
             currentState = GameState.GAMEOVER;
         }
     }
