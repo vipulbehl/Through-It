@@ -131,16 +131,16 @@ public class GameRenderer {
         batcher.draw(bar, pipe1.getX(), pipe1.getY(), pipe1.getWidth(),
                 pipe1.getHeight());
         batcher.draw(bar, pipe1.getX(), pipe1.getY() + pipe1.getHeight() + 45,
-                pipe1.getWidth(), midPointY + 66 - (pipe1.getHeight() + 45));
+                pipe1.getWidth(), midPointY +   (pipe1.getHeight() +45));
 
         batcher.draw(bar, pipe2.getX(), pipe2.getY(), pipe2.getWidth(),
                 pipe2.getHeight());
         batcher.draw(bar, pipe2.getX(), pipe2.getY() + pipe2.getHeight() + 45,
-                pipe2.getWidth(), midPointY + 66 - (pipe2.getHeight() + 45));
+                pipe2.getWidth(), midPointY + (pipe2.getHeight()+45 ));
 
         batcher.draw(bar, pipe3.getX(), pipe3.getY(), pipe3.getWidth(),
                 pipe3.getHeight());
-        batcher.draw(bar, pipe3.getX(), pipe3.getY() + pipe3.getHeight() + 45,
-                pipe3.getWidth(), midPointY + 66 - (pipe3.getHeight() + 45));
+        batcher.draw(bar, pipe3.getX(), pipe3.getY() + pipe3.getHeight() + 40,
+                pipe3.getWidth(), midPointY +  (pipe3.getHeight() +45));
     }
 }

@@ -43,14 +43,18 @@ public class Dot {
                 {
                     velocity.add(0,-220);
                     sharpTurn=false;
+
                 }
+
                 Gdx.app.log("Upwards : ",""+velocity.toString());
             } else {
                 if(sharpTurn)
                 {
                     velocity.add(0,220);
                     sharpTurn=false;
+
                 }
+
                 Gdx.app.log("Downwards : ",""+velocity.toString());
             }
             position.add(velocity.cpy().scl(delta));

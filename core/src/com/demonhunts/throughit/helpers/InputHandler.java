@@ -9,6 +9,8 @@ public class InputHandler implements InputProcessor {
     private Dot myDot;
     private GameWorld myWorld;
 
+
+
     public InputHandler(GameWorld myWorld){
         this.myWorld = myWorld;
         myDot = myWorld.getDot();
@@ -62,4 +64,7 @@ public class InputHandler implements InputProcessor {
     public boolean scrolled(int amount) {
         return false;
     }
+
+
+
 }

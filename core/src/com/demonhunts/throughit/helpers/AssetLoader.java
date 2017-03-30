@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class AssetLoader {
     public static Texture texture;
-    public static TextureRegion bg, grass;
+    public static TextureRegion bg, grass,playButtonUp,playButtonDown;
     public static BitmapFont font;
 
     public static TextureAtlas atlas;
@@ -23,6 +23,12 @@ public class AssetLoader {
 
         texture = new Texture(Gdx.files.internal("texture.png"));
         texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
+
+        playButtonUp = new TextureRegion(texture, 0, 83, 29, 16);
+        playButtonDown = new TextureRegion(texture, 29, 83, 29, 16);
+        playButtonUp.flip(false, true);
+        playButtonDown.flip(false, true);
+
 
         font = new BitmapFont(Gdx.files.internal("text.fnt"));
         font.getData().setScale(.50f,-.50f);
@@ -46,6 +52,10 @@ public class AssetLoader {
         if(!prefs.contains("highScore")){
             prefs.putInteger("highScore",0);
         }
+
+
+
+
     }
 
     public static void dispose() {
