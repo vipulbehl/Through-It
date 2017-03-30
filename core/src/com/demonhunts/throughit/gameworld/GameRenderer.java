@@ -63,7 +63,6 @@ public class GameRenderer {
         shapeRenderer.begin(ShapeType.Filled);
 
         // Draw Background color
-        //shapeRenderer.setColor(55 / 255.0f, 80 / 255.0f, 100 / 255.0f, 1);
         shapeRenderer.rect(0, 0, 136, midPointY + 66);
 
         // Draw Grass
@@ -77,8 +76,7 @@ public class GameRenderer {
 
         batcher.begin();
         batcher.disableBlending();
-        //batcher.draw(AssetLoader.bg, 0, midPointY + 23, 136, 43);
-        batcher.draw(AssetLoader.bg, 0, 0, AssetLoader.bg.getRegionWidth(), AssetLoader.bg.getRegionHeight());
+        batcher.draw(AssetLoader.bg, 0, 0, 272, 408);
         batcher.enableBlending();
         batcher.draw(AssetLoader.dot,dot.getX(),dot.getY(),dot.getWidth(),dot.getHeight());
 
@@ -123,9 +121,9 @@ public class GameRenderer {
     }
 
     private void drawGrass() {
-        batcher.draw(grass, frontGrass.getX(), frontGrass.getY(),
+        batcher.draw(grass, frontGrass.getX(), gameHeight-11,
                 frontGrass.getWidth(), frontGrass.getHeight());
-        batcher.draw(grass, backGrass.getX(), backGrass.getY(),
+        batcher.draw(grass, backGrass.getX(), gameHeight-11,
                 backGrass.getWidth(), backGrass.getHeight());
     }
 
