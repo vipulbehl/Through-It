@@ -54,9 +54,10 @@ public class Dot {
                 Gdx.app.log("Downwards : ",""+velocity.toString());
             }
             position.add(velocity.cpy().scl(delta));
-
+            boundingCircle.set(position.x + 9, position.y + 8, 8f);
         }
-        boundingCircle.set(position.x + 9, position.y + 6, 6.5f);
+
+
     }
 
     public void onClick() {

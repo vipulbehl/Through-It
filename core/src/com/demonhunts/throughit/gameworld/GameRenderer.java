@@ -55,7 +55,7 @@ public class GameRenderer {
     }
 
     public void render(){
-        Dot dot = myWorld.getDot();
+        dot = myWorld.getDot();
         Gdx.gl.glClearColor(255, 255, 255, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -63,7 +63,7 @@ public class GameRenderer {
         shapeRenderer.begin(ShapeType.Filled);
 
         // Draw Background color
-        shapeRenderer.setColor(55 / 255.0f, 80 / 255.0f, 100 / 255.0f, 1);
+        //shapeRenderer.setColor(55 / 255.0f, 80 / 255.0f, 100 / 255.0f, 1);
         shapeRenderer.rect(0, 0, 136, midPointY + 66);
 
         // Draw Grass
@@ -77,7 +77,8 @@ public class GameRenderer {
 
         batcher.begin();
         batcher.disableBlending();
-        batcher.draw(AssetLoader.bg, 0, midPointY + 23, 136, 43);
+        //batcher.draw(AssetLoader.bg, 0, midPointY + 23, 136, 43);
+        batcher.draw(AssetLoader.bg, 0, 0, AssetLoader.bg.getRegionWidth(), AssetLoader.bg.getRegionHeight());
         batcher.enableBlending();
         batcher.draw(AssetLoader.dot,dot.getX(),dot.getY(),dot.getWidth(),dot.getHeight());
 
