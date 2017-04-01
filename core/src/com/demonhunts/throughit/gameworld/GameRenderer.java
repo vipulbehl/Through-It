@@ -140,7 +140,7 @@ public class GameRenderer {
 
         batcher.draw(bar, pipe3.getX(), pipe3.getY(), pipe3.getWidth(),
                 pipe3.getHeight());
-        batcher.draw(bar, pipe3.getX(), pipe3.getY() + pipe3.getHeight() + 40,
+        batcher.draw(bar, pipe3.getX(), pipe3.getY() + pipe3.getHeight() + 45,
                 pipe3.getWidth(), midPointY +  (pipe3.getHeight() +45));
     }
 }
