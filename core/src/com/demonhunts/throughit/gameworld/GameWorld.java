@@ -25,7 +25,7 @@ public class GameWorld {
         currentState = GameState.READY;
         dot = new Dot(33,midPointY-9,17,17);
         scroller = new ScrollHandler(this,midPointY + 66);
-        ground = new Rectangle(0,midPointY+66,136,11);
+        ground = new Rectangle(0,midPointY*2-11,136,11);
         ceiling = new Rectangle(0,0,136,0);
         this.midPointY = midPointY;
     }

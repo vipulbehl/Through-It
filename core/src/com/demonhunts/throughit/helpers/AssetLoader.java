@@ -35,17 +35,16 @@ public class AssetLoader {
 
         atlas = new TextureAtlas("images.pack");
         dot = atlas.findRegion("dot");
-        //dot = new TextureRegion(texture, 153, 0, 17, 12);
         dot.flip(false, true);
 
         bg = atlas.findRegion("back");
-        //bg = new TextureRegion(texture, 0, 0, 136, 43);
         bg.flip(false, true);
 
-        grass = new TextureRegion(texture, 0, 43, 143, 11);
+        grass = atlas.findRegion("bottom");
         grass.flip(false, true);
 
-        bar = new TextureRegion(texture, 136, 16, 22, 3);
+//        bar = new TextureRegion(texture, 136, 16, 22, 3);
+        bar = atlas.findRegion("bambooCluster");
         bar.flip(false, true);
 
         prefs = Gdx.app.getPreferences("ThroughIt");
