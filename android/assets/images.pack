@@ -38,3 +38,17 @@ bambooCluster
   orig: 78, 154
   offset: 0, 0
   index: -1
+playButton
+  rotate: false
+  xy: 727, 353
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+playButtonClicked
+  rotate: false
+  xy: 727, 353
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1

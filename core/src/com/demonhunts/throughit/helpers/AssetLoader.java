@@ -14,7 +14,7 @@ public class AssetLoader {
 
     public static TextureAtlas atlas;
 
-    public static TextureRegion dot;
+    public static TextureRegion dot,playbutton;
     public static TextureRegion bar;
 
     public static Preferences prefs;
@@ -36,6 +36,9 @@ public class AssetLoader {
         atlas = new TextureAtlas("images.pack");
         dot = atlas.findRegion("dot");
         dot.flip(false, true);
+
+        playbutton = atlas.findRegion("playButton");
+
 
         bg = atlas.findRegion("back");
         bg.flip(false, true);
