@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.demonhunts.throughit.ThroughIt;
 import com.demonhunts.throughit.gameobjects.Dot;
 import com.demonhunts.throughit.helpers.AssetLoader;
 import com.demonhunts.throughit.gameobjects.ScrollHandler;
@@ -13,6 +14,7 @@ import com.demonhunts.throughit.gameobjects.Pipe;
 import com.demonhunts.throughit.gameobjects.Grass;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.demonhunts.throughit.helpers.FontHelper;
+import com.demonhunts.throughit.screens.EndScreen;
 
 
 public class GameRenderer {
@@ -21,6 +23,7 @@ public class GameRenderer {
     private OrthographicCamera cam;
     private ShapeRenderer shapeRenderer;
     private SpriteBatch batcher;
+    private final ThroughIt game;
 
     private Dot dot;
     private ScrollHandler scroller;
@@ -35,8 +38,9 @@ public class GameRenderer {
 
     private FontHelper fontHelper;
 
-    public GameRenderer(GameWorld world, int gameHeight, int midPointY){
+    public GameRenderer(GameWorld world, int gameHeight, int midPointY, final ThroughIt game){
         myWorld = world;
+        this.game = game;
         this.midPointY = midPointY;
         this.gameHeight = gameHeight;
 
@@ -90,6 +94,9 @@ public class GameRenderer {
         } else {
 
             if (myWorld.isGameOver()) {
+                EndScreen end = new EndScreen(game);
+                end.setScore(myWorld.getScore());
+                game.setScreen(end);
                 AssetLoader.font.draw(batcher, "Game Over", fontHelper.centerAlign("Game Over"), 55);
                 AssetLoader.font.draw(batcher, "Try again?", fontHelper.centerAlign("Try again?"), 75);
                 AssetLoader.font.draw(batcher,"HighScore",fontHelper.centerAlign("HighScore"),95);

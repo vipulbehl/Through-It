@@ -15,8 +15,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.demonhunts.throughit.ThroughIt;
 import com.demonhunts.throughit.helpers.AssetLoader;
+import com.demonhunts.throughit.helpers.FontHelper;
 
-public class MainScreen implements Screen, InputProcessor {
+public class EndScreen implements Screen, InputProcessor {
 
     private final ThroughIt game;
 
@@ -29,9 +30,11 @@ public class MainScreen implements Screen, InputProcessor {
     private Skin buttonSkin;
     private ImageButton playButton;
 
+    private int score;
     private TextureRegion bg;
+    private FontHelper fontHelper;
 
-    public MainScreen(final ThroughIt game){
+    public EndScreen(final ThroughIt game){
         this.game = game;
 
         cam = new OrthographicCamera();
@@ -51,12 +54,13 @@ public class MainScreen implements Screen, InputProcessor {
         stage = new Stage();
         stage.clear();
 
+        fontHelper = new FontHelper();
         Gdx.input.setInputProcessor(stage);
 
         //Play Button Resources
         playButton = new ImageButton(buttonSkin.getDrawable("playButton"),buttonSkin.getDrawable("playButtonClicked"));
-        playButton.setSize(60,60);
-        playButton.setPosition(Gdx.graphics.getWidth()/2-30,Gdx.graphics.getHeight()/2-30);
+        playButton.setSize(30,30);
+        playButton.setPosition(Gdx.graphics.getWidth()/2-30,95);
         playButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -66,6 +70,9 @@ public class MainScreen implements Screen, InputProcessor {
         stage.addActor(playButton);
     }
 
+    public void setScore(int score){
+        this.score = score;
+    }
     @Override
     public void show() {
 
@@ -78,7 +85,12 @@ public class MainScreen implements Screen, InputProcessor {
 
         batcher.begin();
         batcher.draw(bg,0,0);
-        AssetLoader.font.draw(batcher,"Through It",40,40);
+        AssetLoader.font.draw(batcher, "Game Over", fontHelper.centerAlign("Game Over"), 35);
+        AssetLoader.font.draw(batcher, "Try again?", fontHelper.centerAlign("Try again?"), 55);
+        AssetLoader.font.draw(batcher,"HighScore",fontHelper.centerAlign("HighScore"),75);
+        String highScore = AssetLoader.getHighScore()+"";
+        int highScoreWidth = (136/2)+(fontHelper.getWidth("HighScore")/2)+10;
+        AssetLoader.font.draw(batcher, highScore, highScoreWidth, 75);
         batcher.end();
 
         stage.act();

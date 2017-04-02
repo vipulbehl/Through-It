@@ -2,6 +2,7 @@ package com.demonhunts.throughit.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.demonhunts.throughit.ThroughIt;
 import com.demonhunts.throughit.gameworld.GameRenderer;
 import com.demonhunts.throughit.gameworld.GameWorld;
 import com.demonhunts.throughit.helpers.InputHandler;
@@ -10,16 +11,18 @@ public class GameScreen implements Screen {
 
     private GameWorld world;
     private GameRenderer renderer;
+    private final ThroughIt game;
 
-    public GameScreen() {
+    public GameScreen(final ThroughIt game) {
         float screenWidth = Gdx.graphics.getWidth();
         float screenHeight = Gdx.graphics.getHeight();
         float gameWidth = 136;
         float gameHeight = screenHeight/(screenWidth/gameWidth);
         int midPoint = (int) gameHeight/2;
 
+        this.game = game;
         world = new GameWorld(midPoint);
-        renderer = new GameRenderer(world,(int)gameHeight,midPoint);
+        renderer = new GameRenderer(world,(int)gameHeight,midPoint,game);
 
         Gdx.input.setInputProcessor(new InputHandler(world));
     }
