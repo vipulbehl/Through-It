@@ -2,6 +2,7 @@ package com.demonhunts.throughit.helpers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -12,7 +13,7 @@ public class AssetLoader {
     public static TextureRegion bg, grass,playButtonUp,playButtonDown;
     public static BitmapFont font;
 
-    public static TextureAtlas atlas;
+    public static TextureAtlas atlas,buttonAtlas;
 
     public static TextureRegion dot,playbutton;
     public static TextureRegion bar;
@@ -31,8 +32,10 @@ public class AssetLoader {
 
 
         font = new BitmapFont(Gdx.files.internal("text.fnt"));
+        font.setColor(Color.BLACK);
         font.getData().setScale(.50f,-.50f);
 
+        buttonAtlas = new TextureAtlas("buttons.pack");
         atlas = new TextureAtlas("images.pack");
         dot = atlas.findRegion("dot");
         dot.flip(false, true);

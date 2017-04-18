@@ -14,6 +14,7 @@ import com.demonhunts.throughit.gameobjects.Pipe;
 import com.demonhunts.throughit.gameobjects.Grass;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.demonhunts.throughit.helpers.FontHelper;
+import com.demonhunts.throughit.screens.EndScreen;
 
 
 public class GameRenderer {
@@ -99,7 +100,7 @@ public class GameRenderer {
                 String highScore = AssetLoader.getHighScore()+"";
                 int highScoreWidth = (136/2)+(fontHelper.getWidth("HighScore")/2)+10;
                 AssetLoader.font.draw(batcher, highScore, highScoreWidth, 95);
-                batcher.draw(AssetLoader.playbutton,40,125,20,20);
+                game.setScreen(new EndScreen(game,myWorld.getScore()));
             }
 
             String score = myWorld.getScore() + "";
