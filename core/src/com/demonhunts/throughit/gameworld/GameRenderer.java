@@ -6,6 +6,11 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.demonhunts.throughit.ThroughIt;
 import com.demonhunts.throughit.gameobjects.Dot;
 import com.demonhunts.throughit.helpers.AssetLoader;
@@ -15,6 +20,7 @@ import com.demonhunts.throughit.gameobjects.Grass;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.demonhunts.throughit.helpers.FontHelper;
 import com.demonhunts.throughit.screens.EndScreen;
+import com.demonhunts.throughit.screens.GameScreen;
 
 
 public class GameRenderer {
@@ -30,13 +36,17 @@ public class GameRenderer {
     private Grass frontGrass, backGrass;
     private Pipe pipe1, pipe2, pipe3;
 
-    private TextureRegion bg, grass;
+    private TextureRegion bg, grass,playbutton;
     private TextureRegion bar;
 
     private int midPointY;
     private int gameHeight;
 
     private FontHelper fontHelper;
+   // private ImageButton playButton;
+    private Stage stage;
+    private Skin buttonSkin;
+
 
     public GameRenderer(GameWorld world, int gameHeight, int midPointY, final ThroughIt game){
         myWorld = world;
@@ -85,8 +95,10 @@ public class GameRenderer {
         batcher.draw(AssetLoader.dot,dot.getX(),dot.getY(),dot.getWidth(),dot.getHeight());
 
         drawGrass();
+        drawplaybutton();
         drawPipes();
         batcher.enableBlending();
+
 
 
         if (myWorld.isReady()) {
@@ -123,7 +135,15 @@ public class GameRenderer {
         bg = AssetLoader.bg;
         grass = AssetLoader.grass;
         bar = AssetLoader.bar;
+        playbutton = AssetLoader.playbutton;
     }
+
+
+    private void drawplaybutton()
+    {
+        batcher.draw(playbutton, 30,210,12,12);
+    }
+
 
     private void drawGrass() {
         batcher.draw(grass, frontGrass.getX(), gameHeight-11,

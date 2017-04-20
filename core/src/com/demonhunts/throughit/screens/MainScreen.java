@@ -10,6 +10,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -29,6 +30,8 @@ public class MainScreen implements Screen,InputProcessor {
     OrthographicCamera camera;
     Sound clickSound;
     Preferences prefs;
+    BitmapFont bmf;
+
 
     private Stage stage;
     private Skin buttonSkin;
@@ -47,7 +50,9 @@ public class MainScreen implements Screen,InputProcessor {
         buttonSkin = new Skin();
         buttonSkin.addRegions(buttonAtlas);
         stage = new Stage(new FitViewport(appWidth,appHeight));
+        bmf = new BitmapFont();
         stage.clear();
+
 
         InputMultiplexer plex = new InputMultiplexer();
         plex.addProcessor(this);
@@ -66,6 +71,10 @@ public class MainScreen implements Screen,InputProcessor {
             }
         });
         stage.addActor(playButton);
+
+
+
+
 
         //Leaderboard Button resources
         leaderboardButton = new ImageButton(buttonSkin.getDrawable("leaderboard"),buttonSkin.getDrawable("leaderboardClicked"));
@@ -102,6 +111,10 @@ public class MainScreen implements Screen,InputProcessor {
             }
         });
         stage.addActor(rateButton);
+
+
+
+
 
         //Sound Button resources
         if(prefs.getBoolean("soundOn",true))

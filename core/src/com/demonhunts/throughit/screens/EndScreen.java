@@ -71,19 +71,19 @@ public class EndScreen implements Screen,InputProcessor {
 //        game.playServices.gamesPlayedAchievements(gameType,prefs.getInteger(gameType+" played",0));
 
         layoutGameOver = new GlyphLayout();
-        layoutGameOver.setText(AssetLoader.font,"Game Over");
+        layoutGameOver.setText(AssetLoader.endfont,"Game Over");
 
         layoutYourScore = new GlyphLayout();
-        layoutYourScore.setText(AssetLoader.font,scoreString);
+        layoutYourScore.setText(AssetLoader.endfont,scoreString);
 
         layoutHighScore = new GlyphLayout();
-        layoutHighScore.setText(AssetLoader.font,highScoreString);
+        layoutHighScore.setText(AssetLoader.endfont,highScoreString);
 
 
         //Play Button resources
         playButton = new ImageButton(buttonSkin.getDrawable("play"),buttonSkin.getDrawable("playClicked"));
         playButton.setSize(50,50);
-        playButton.setPosition(appWidth/2-playButton.getWidth()/2,appHeight/2-playButton.getHeight()/2);
+        playButton.setPosition(appWidth/2-playButton.getWidth()/2,appHeight/2-playButton.getHeight()/2+20);
         playButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
 //                if(prefs.getBoolean("soundOn",true))
@@ -144,9 +144,9 @@ public class EndScreen implements Screen,InputProcessor {
         batch.end();
 
         batch.begin();
-        AssetLoader.font.draw(batch,"GAME OVER",appWidth/2-layoutGameOver.width/2,heightPercent(80));
-        AssetLoader.font.draw(batch,scoreString,appWidth/2-layoutYourScore.width/2,heightPercent(70));
-        AssetLoader.font.draw(batch,highScoreString,appWidth/2-layoutHighScore.width/2,heightPercent(60));
+        AssetLoader.endfont.draw(batch,"GAME OVER",appWidth/2-layoutGameOver.width/2,heightPercent(90));
+        AssetLoader.endfont.draw(batch,scoreString,appWidth/2-layoutYourScore.width/2,heightPercent(80));
+        AssetLoader.endfont.draw(batch,highScoreString,appWidth/2-layoutHighScore.width/2,heightPercent(70));
         batch.end();
     }
 

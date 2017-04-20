@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class AssetLoader {
     public static Texture texture;
     public static TextureRegion bg, grass,playButtonUp,playButtonDown;
-    public static BitmapFont font;
+    public static BitmapFont font,endfont;
 
     public static TextureAtlas atlas,buttonAtlas;
 
@@ -31,9 +31,13 @@ public class AssetLoader {
         playButtonDown.flip(false, true);
 
 
-        font = new BitmapFont(Gdx.files.internal("text.fnt"),false);
+        font = new BitmapFont(Gdx.files.internal("text.fnt"));
         font.setColor(Color.BLACK);
-        font.getData().setScale(.50f,-.50f);
+        font.getData().setScale(0.5f,-.5f);
+
+        endfont = new BitmapFont(Gdx.files.internal("text.fnt"),true);
+        endfont.setColor(Color.BLACK);
+        endfont.getData().setScale(0.5f,-.5f);
 
         buttonAtlas = new TextureAtlas("buttons.pack");
         atlas = new TextureAtlas("images.pack");
