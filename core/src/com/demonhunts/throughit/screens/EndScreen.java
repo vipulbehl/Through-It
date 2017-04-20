@@ -9,6 +9,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -24,14 +25,13 @@ import com.demonhunts.throughit.helpers.AssetLoader;
 public class EndScreen implements Screen,InputProcessor {
     final ThroughIt game;
     int score;
-    final float appWidth = 768;
-    final float appHeight = 1280;
+    final float appWidth = 136;
+    final float appHeight = 204;
     SpriteBatch batch;
     OrthographicCamera camera;
     Sound clickSound;
     Preferences prefs;
 
-    private String gameType;
     private String scoreString;
     private String highScoreString;
 
@@ -66,7 +66,6 @@ public class EndScreen implements Screen,InputProcessor {
 //        game.playServices.submitScore(score.getScore(),gameType);
 
         //setting games Played preferences
-        prefs.putInteger(gameType+" played",prefs.getInteger(gameType+" played",0)+1);
         prefs.flush();
 
 //        game.playServices.gamesPlayedAchievements(gameType,prefs.getInteger(gameType+" played",0));
@@ -83,6 +82,7 @@ public class EndScreen implements Screen,InputProcessor {
 
         //Play Button resources
         playButton = new ImageButton(buttonSkin.getDrawable("play"),buttonSkin.getDrawable("playClicked"));
+        playButton.setSize(50,50);
         playButton.setPosition(appWidth/2-playButton.getWidth()/2,appHeight/2-playButton.getHeight()/2);
         playButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
@@ -95,6 +95,7 @@ public class EndScreen implements Screen,InputProcessor {
 
         //Leaderboard Button resources
         leaderboardButton = new ImageButton(buttonSkin.getDrawable("leaderboard"),buttonSkin.getDrawable("leaderboardClicked"));
+        leaderboardButton.setSize(50,50);
         leaderboardButton.setPosition(widthPercent(30)-leaderboardButton.getWidth()/2,heightPercent(35));
         leaderboardButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
@@ -107,6 +108,7 @@ public class EndScreen implements Screen,InputProcessor {
 
         //Achievements Button resources
         achievementsButton = new ImageButton(buttonSkin.getDrawable("achievements"),buttonSkin.getDrawable("achievementsClicked"));
+        achievementsButton.setSize(50,50);
         achievementsButton.setPosition(widthPercent(70)-achievementsButton.getWidth()/2,heightPercent(35));
         achievementsButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
@@ -119,6 +121,7 @@ public class EndScreen implements Screen,InputProcessor {
 
         //Home Button resources
         homeButton = new ImageButton(buttonSkin.getDrawable("home"),buttonSkin.getDrawable("homeClicked"));
+        homeButton.setSize(50,50);
         homeButton.setPosition(appWidth/2-homeButton.getWidth()/2, heightPercent(25));
         homeButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){

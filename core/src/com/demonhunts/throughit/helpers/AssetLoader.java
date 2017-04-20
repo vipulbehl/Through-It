@@ -31,7 +31,7 @@ public class AssetLoader {
         playButtonDown.flip(false, true);
 
 
-        font = new BitmapFont(Gdx.files.internal("text.fnt"));
+        font = new BitmapFont(Gdx.files.internal("text.fnt"),false);
         font.setColor(Color.BLACK);
         font.getData().setScale(.50f,-.50f);
 
