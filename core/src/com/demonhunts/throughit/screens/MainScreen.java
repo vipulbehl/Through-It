@@ -10,7 +10,6 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -24,13 +23,12 @@ import com.demonhunts.throughit.helpers.AssetLoader;
 
 public class MainScreen implements Screen,InputProcessor {
     final ThroughIt game;
-    final float appWidth = 768;
-    final float appHeight = 1280;
+    final float appWidth = 136;
+    final float appHeight = 204;
     SpriteBatch batch;
     OrthographicCamera camera;
     Sound clickSound;
     Preferences prefs;
-    BitmapFont bmf;
 
 
     private Stage stage;
@@ -50,7 +48,6 @@ public class MainScreen implements Screen,InputProcessor {
         buttonSkin = new Skin();
         buttonSkin.addRegions(buttonAtlas);
         stage = new Stage(new FitViewport(appWidth,appHeight));
-        bmf = new BitmapFont();
         stage.clear();
 
 
@@ -64,6 +61,7 @@ public class MainScreen implements Screen,InputProcessor {
 
         //Play Button resources
         playButton = new ImageButton(buttonSkin.getDrawable("play"),buttonSkin.getDrawable("playClicked"));
+        playButton.setSize(50,50);
         playButton.setPosition(appWidth/2-playButton.getWidth()/2,appHeight/2-playButton.getHeight()/2);
         playButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
@@ -78,7 +76,8 @@ public class MainScreen implements Screen,InputProcessor {
 
         //Leaderboard Button resources
         leaderboardButton = new ImageButton(buttonSkin.getDrawable("leaderboard"),buttonSkin.getDrawable("leaderboardClicked"));
-        leaderboardButton.setPosition(widthPercent(30)-leaderboardButton.getWidth()/2,heightPercent(35));
+        leaderboardButton.setSize(50,50);
+        leaderboardButton.setPosition(widthPercent(30)-leaderboardButton.getWidth()/2,heightPercent(25));
         leaderboardButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
                 if(prefs.getBoolean("soundOn",true))
@@ -90,7 +89,8 @@ public class MainScreen implements Screen,InputProcessor {
 
         //Achievements Button resources
         achievementsButton = new ImageButton(buttonSkin.getDrawable("achievements"),buttonSkin.getDrawable("achievementsClicked"));
-        achievementsButton.setPosition(widthPercent(70)-achievementsButton.getWidth()/2,heightPercent(35));
+        achievementsButton.setSize(50,50);
+        achievementsButton.setPosition(widthPercent(70)-achievementsButton.getWidth()/2,heightPercent(25));
         achievementsButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
                 if(prefs.getBoolean("soundOn",true))
@@ -102,7 +102,8 @@ public class MainScreen implements Screen,InputProcessor {
 
         //Rate Button Resource
         rateButton = new ImageButton(buttonSkin.getDrawable("rate"),buttonSkin.getDrawable("rate"));
-        rateButton.setPosition(widthPercent(50),heightPercent(18));
+        rateButton.setSize(15,15);
+        rateButton.setPosition(widthPercent(53),heightPercent(18));
         rateButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
                 if(prefs.getBoolean("soundOn",true))
@@ -112,10 +113,6 @@ public class MainScreen implements Screen,InputProcessor {
         });
         stage.addActor(rateButton);
 
-
-
-
-
         //Sound Button resources
         if(prefs.getBoolean("soundOn",true))
             soundButton = new ImageButton(buttonSkin.getDrawable("soundEnable"),buttonSkin.getDrawable("soundDisable"),
@@ -124,11 +121,12 @@ public class MainScreen implements Screen,InputProcessor {
             soundButton = new ImageButton(buttonSkin.getDrawable("soundDisable"),buttonSkin.getDrawable("soundEnable"),
                     buttonSkin.getDrawable("soundEnable"));
 
-        soundButton.setPosition(widthPercent(40),heightPercent(18));
+        soundButton.setPosition(widthPercent(37),heightPercent(18));
+        soundButton.setSize(15,15);
         soundButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
                 if(prefs.getBoolean("soundOn",true)){
-                    clickSound.play();
+//                    clickSound.play();
                     prefs.putBoolean("soundOn",false);
                     soundButton.setChecked(true);
                     //soundButton.setBackground(buttonSkin.getDrawable("soundDisable"));
@@ -154,9 +152,9 @@ public class MainScreen implements Screen,InputProcessor {
         stage.draw();
         batch.end();
 
-//        batch.begin();
-//        batch.draw(gameName,appWidth/2-gameName.getWidth()/2,heightPercent(65));
-//        batch.end();
+        batch.begin();
+        AssetLoader.endfont.draw(batch,"Through It",appWidth/3,heightPercent(65));
+        batch.end();
     }
 
     @Override

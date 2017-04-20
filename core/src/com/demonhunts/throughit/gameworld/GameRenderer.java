@@ -36,17 +36,13 @@ public class GameRenderer {
     private Grass frontGrass, backGrass;
     private Pipe pipe1, pipe2, pipe3;
 
-    private TextureRegion bg, grass,playbutton;
+    private TextureRegion bg, grass;
     private TextureRegion bar;
 
     private int midPointY;
     private int gameHeight;
 
     private FontHelper fontHelper;
-   // private ImageButton playButton;
-    private Stage stage;
-    private Skin buttonSkin;
-
 
     public GameRenderer(GameWorld world, int gameHeight, int midPointY, final ThroughIt game){
         myWorld = world;
@@ -95,7 +91,6 @@ public class GameRenderer {
         batcher.draw(AssetLoader.dot,dot.getX(),dot.getY(),dot.getWidth(),dot.getHeight());
 
         drawGrass();
-        drawplaybutton();
         drawPipes();
         batcher.enableBlending();
 
@@ -135,15 +130,7 @@ public class GameRenderer {
         bg = AssetLoader.bg;
         grass = AssetLoader.grass;
         bar = AssetLoader.bar;
-        playbutton = AssetLoader.playbutton;
     }
-
-
-    private void drawplaybutton()
-    {
-        batcher.draw(playbutton, 30,210,12,12);
-    }
-
 
     private void drawGrass() {
         batcher.draw(grass, frontGrass.getX(), gameHeight-11,
