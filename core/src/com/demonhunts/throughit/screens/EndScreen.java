@@ -82,7 +82,7 @@ public class EndScreen implements Screen,InputProcessor {
 
         //Play Button resources
         playButton = new ImageButton(buttonSkin.getDrawable("play"),buttonSkin.getDrawable("playClicked"));
-        playButton.setSize(50,50);
+        playButton.setSize(50,20);
         playButton.setPosition(appWidth/2-playButton.getWidth()/2,appHeight/2-playButton.getHeight()/2);
         playButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
@@ -95,8 +95,8 @@ public class EndScreen implements Screen,InputProcessor {
 
         //Leaderboard Button resources
         leaderboardButton = new ImageButton(buttonSkin.getDrawable("leaderboard"),buttonSkin.getDrawable("leaderboardClicked"));
-        leaderboardButton.setSize(50,50);
-        leaderboardButton.setPosition(widthPercent(30)-leaderboardButton.getWidth()/2,heightPercent(25));
+        leaderboardButton.setSize(50,20);
+        leaderboardButton.setPosition(widthPercent(30)-leaderboardButton.getWidth()/2,heightPercent(30));
         leaderboardButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
 //                if(prefs.getBoolean("soundOn",true))
@@ -108,8 +108,8 @@ public class EndScreen implements Screen,InputProcessor {
 
         //Achievements Button resources
         achievementsButton = new ImageButton(buttonSkin.getDrawable("achievements"),buttonSkin.getDrawable("achievementsClicked"));
-        achievementsButton.setSize(50,50);
-        achievementsButton.setPosition(widthPercent(70)-achievementsButton.getWidth()/2,heightPercent(25));
+        achievementsButton.setSize(50,20);
+        achievementsButton.setPosition(widthPercent(70)-achievementsButton.getWidth()/2,heightPercent(30));
         achievementsButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
 //                if(prefs.getBoolean("soundOn",true))
@@ -121,8 +121,8 @@ public class EndScreen implements Screen,InputProcessor {
 
         //Home Button resources
         homeButton = new ImageButton(buttonSkin.getDrawable("home"),buttonSkin.getDrawable("homeClicked"));
-        homeButton.setSize(50,50);
-        homeButton.setPosition(appWidth/2-homeButton.getWidth()/2, heightPercent(10));
+        homeButton.setSize(50,20);
+        homeButton.setPosition(appWidth/2-homeButton.getWidth()/2, heightPercent(15));
         homeButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
 //                if(prefs.getBoolean("soundOn",true))

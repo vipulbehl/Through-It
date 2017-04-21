@@ -41,7 +41,7 @@ public class AssetLoader {
 
         buttonAtlas = new TextureAtlas("buttons.pack");
         atlas = new TextureAtlas("images.pack");
-        dot = atlas.findRegion("dot");
+        dot = atlas.findRegion("ball");
         dot.flip(false, true);
 
         playbutton = atlas.findRegion("playButton");
@@ -54,7 +54,7 @@ public class AssetLoader {
         grass.flip(false, true);
 
 //        bar = new TextureRegion(texture, 136, 16, 22, 3);
-        bar = atlas.findRegion("bambooCluster");
+        bar = atlas.findRegion("pipe1");
         bar.flip(false, true);
 
         prefs = Gdx.app.getPreferences("ThroughIt");
