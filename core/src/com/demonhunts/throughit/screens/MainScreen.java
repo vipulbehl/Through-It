@@ -38,7 +38,7 @@ public class MainScreen implements Screen,InputProcessor {
 
     public MainScreen(final ThroughIt gam){
         this.game=gam;
-//        game.playServices.signIn();
+        game.playServices.signIn();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, appWidth, appHeight);
         batch = new SpriteBatch();
@@ -74,9 +74,9 @@ public class MainScreen implements Screen,InputProcessor {
         leaderboardButton.setPosition(widthPercent(30)-leaderboardButton.getWidth()/2,heightPercent(30));
         leaderboardButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
-                if(prefs.getBoolean("soundOn",true))
-                    clickSound.play();
-//                game.playServices.showScore();
+//                if(prefs.getBoolean("soundOn",true))
+//                    clickSound.play();
+                game.playServices.showScore();
             }
         });
         stage.addActor(leaderboardButton);
@@ -87,9 +87,9 @@ public class MainScreen implements Screen,InputProcessor {
         achievementsButton.setPosition(widthPercent(70)-achievementsButton.getWidth()/2,heightPercent(30));
         achievementsButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
-                if(prefs.getBoolean("soundOn",true))
-                    clickSound.play();
-//                game.playServices.showAchievement();
+//                if(prefs.getBoolean("soundOn",true))
+//                    clickSound.play();
+                game.playServices.showAchievement();
             }
         });
         stage.addActor(achievementsButton);
@@ -100,9 +100,9 @@ public class MainScreen implements Screen,InputProcessor {
         rateButton.setPosition(widthPercent(53),heightPercent(18));
         rateButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
-                if(prefs.getBoolean("soundOn",true))
-                    clickSound.play();
-//                game.playServices.rateGame();
+//                if(prefs.getBoolean("soundOn",true))
+//                    clickSound.play();
+                game.playServices.rateGame();
             }
         });
         stage.addActor(rateButton);

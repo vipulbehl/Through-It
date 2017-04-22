@@ -3,6 +3,14 @@
 
     <string name="app_name">Through It</string>
     <string name="app_id">992202886194</string>
+    <string name="achievement_score_5_points">CgkIspian_AcEAIQAg</string>
+    <string name="achievement_score_10_points">CgkIspian_AcEAIQAw</string>
+    <string name="achievement_score_20_points">CgkIspian_AcEAIQBA</string>
+    <string name="achievement_score_30_points">CgkIspian_AcEAIQBQ</string>
+    <string name="achievement_score_40_points">CgkIspian_AcEAIQBg</string>
+    <string name="achievement_score_50_points">CgkIspian_AcEAIQBw</string>
+    <string name="achievement_score_75_points">CgkIspian_AcEAIQCA</string>
+    <string name="achievement_score_100_points">CgkIspian_AcEAIQCQ</string>
     <string name="leaderboard_highscore">CgkIspian_AcEAIQAA</string>
 
 </resources>

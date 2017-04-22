@@ -111,6 +111,7 @@ public class GameRenderer {
             }
 
             String score = myWorld.getScore() + "";
+            game.playServices.unlockAchievement(myWorld.getScore());
             AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2) - (3 * score.length() - 1), 11);
         }
 

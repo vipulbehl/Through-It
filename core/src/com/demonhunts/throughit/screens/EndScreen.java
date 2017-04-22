@@ -63,12 +63,7 @@ public class EndScreen implements Screen,InputProcessor {
 
         scoreString = "Score : "+score;
         highScoreString = "Best : "+AssetLoader.getHighScore();
-//        game.playServices.submitScore(score.getScore(),gameType);
-
-        //setting games Played preferences
-        prefs.flush();
-
-//        game.playServices.gamesPlayedAchievements(gameType,prefs.getInteger(gameType+" played",0));
+        game.playServices.submitScore(score);
 
         layoutGameOver = new GlyphLayout();
         layoutGameOver.setText(AssetLoader.endfont,"Game Over");
@@ -101,7 +96,7 @@ public class EndScreen implements Screen,InputProcessor {
             public void clicked(InputEvent event, float x, float y){
 //                if(prefs.getBoolean("soundOn",true))
 //                    clickSound.play();
-//                game.playServices.showScore();
+                game.playServices.showScore();
             }
         });
         stage.addActor(leaderboardButton);
@@ -114,7 +109,7 @@ public class EndScreen implements Screen,InputProcessor {
             public void clicked(InputEvent event, float x, float y){
 //                if(prefs.getBoolean("soundOn",true))
 //                    clickSound.play();
-//                game.playServices.showAchievement();
+                game.playServices.showAchievement();
             }
         });
         stage.addActor(achievementsButton);
