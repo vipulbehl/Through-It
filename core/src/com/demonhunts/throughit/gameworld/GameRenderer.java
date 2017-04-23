@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.TimeUtils;
 import com.demonhunts.throughit.ThroughIt;
 import com.demonhunts.throughit.gameobjects.Dot;
 import com.demonhunts.throughit.helpers.AssetLoader;
@@ -38,6 +39,7 @@ public class GameRenderer {
 
     private TextureRegion bg, grass;
     private TextureRegion bar;
+    long currentTime;
 
     private int midPointY;
     private int gameHeight;
@@ -59,6 +61,7 @@ public class GameRenderer {
         batcher = new SpriteBatch();
         batcher.setProjectionMatrix(cam.combined);
 
+        currentTime = TimeUtils.millis();
         fontHelper = new FontHelper();
         bg = AssetLoader.bg;
         initGameObjects();
@@ -102,13 +105,11 @@ public class GameRenderer {
         } else {
 
             if (myWorld.isGameOver()) {
-                AssetLoader.font.draw(batcher, "Game Over", fontHelper.centerAlign("Game Over"), 55);
-                AssetLoader.font.draw(batcher, "Try again?", fontHelper.centerAlign("Try again?"), 75);
-                AssetLoader.font.draw(batcher,"HighScore",fontHelper.centerAlign("HighScore"),95);
-                String highScore = AssetLoader.getHighScore()+"";
-                int highScoreWidth = (136/2)+(fontHelper.getWidth("HighScore")/2)+10;
-                AssetLoader.font.draw(batcher, highScore, highScoreWidth, 95);
-                game.setScreen(new EndScreen(game,myWorld.getScore()));
+                AssetLoader.font.draw(batcher, "Game Over", fontHelper.centerAlign("Game Over"), 85);
+
+                if(TimeUtils.millis() - currentTime > 2000)
+                    game.setScreen(new EndScreen(game,myWorld.getScore()));
+
             }
 
             String score = myWorld.getScore() + "";
@@ -120,6 +121,9 @@ public class GameRenderer {
         }
 
         batcher.end();
+
+        if(!myWorld.isGameOver())
+            currentTime = TimeUtils.millis();
     }
     private void initGameObjects() {
         dot = myWorld.getDot();

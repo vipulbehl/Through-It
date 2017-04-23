@@ -5,6 +5,7 @@ import com.demonhunts.throughit.helpers.AssetLoader;
 import com.demonhunts.throughit.helpers.PlayServices;
 import com.demonhunts.throughit.screens.GameScreen;
 import com.demonhunts.throughit.screens.MainScreen;
+import com.demonhunts.throughit.screens.SplashScreen;
 
 public class ThroughIt extends Game {
 
@@ -24,7 +25,7 @@ public class ThroughIt extends Game {
     @Override
     public void create() {
         AssetLoader.load();
-        this.setScreen(new MainScreen(this));
+        this.setScreen(new SplashScreen(this));
     }
 
     @Override

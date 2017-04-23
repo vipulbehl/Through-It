@@ -30,6 +30,7 @@ public class MainScreen implements Screen,InputProcessor {
     OrthographicCamera camera;
     Sound clickSound;
     Preferences prefs;
+    private int backCounter;
 
 
     private Stage stage;
@@ -39,6 +40,7 @@ public class MainScreen implements Screen,InputProcessor {
 
     public MainScreen(final ThroughIt gam){
         this.game=gam;
+        backCounter = 0;
 
         if(game.isPlayServices)
             game.playServices.signIn();
@@ -205,8 +207,11 @@ public class MainScreen implements Screen,InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        if(keycode == Input.Keys.BACK){
+        if(keycode == Input.Keys.BACK && backCounter ==2){
             Gdx.app.exit();
+        }
+        else{
+            backCounter++;
         }
         return true;
     }
