@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.demonhunts.throughit.ThroughIt;
 import com.demonhunts.throughit.helpers.AssetLoader;
@@ -52,7 +53,7 @@ public class EndScreen implements Screen,InputProcessor {
         buttonAtlas = new TextureAtlas("buttons.pack");
         buttonSkin = new Skin();
         buttonSkin.addRegions(buttonAtlas);
-        stage = new Stage(new FitViewport(appWidth,appHeight));
+        stage = new Stage(new FillViewport(appWidth,appHeight));
         stage.clear();
         InputMultiplexer plex = new InputMultiplexer();
         plex.addProcessor(stage);
@@ -63,7 +64,9 @@ public class EndScreen implements Screen,InputProcessor {
 
         scoreString = "Score : "+score;
         highScoreString = "Best : "+AssetLoader.getHighScore();
-        game.playServices.submitScore(score);
+
+        if(game.isPlayServices)
+            game.playServices.submitScore(score);
 
         layoutGameOver = new GlyphLayout();
         layoutGameOver.setText(AssetLoader.endfont,"Game Over");
@@ -96,7 +99,8 @@ public class EndScreen implements Screen,InputProcessor {
             public void clicked(InputEvent event, float x, float y){
 //                if(prefs.getBoolean("soundOn",true))
 //                    clickSound.play();
-                game.playServices.showScore();
+                if(game.isPlayServices)
+                    game.playServices.showScore();
             }
         });
         stage.addActor(leaderboardButton);
@@ -109,7 +113,8 @@ public class EndScreen implements Screen,InputProcessor {
             public void clicked(InputEvent event, float x, float y){
 //                if(prefs.getBoolean("soundOn",true))
 //                    clickSound.play();
-                game.playServices.showAchievement();
+                if(game.isPlayServices)
+                    game.playServices.showAchievement();
             }
         });
         stage.addActor(achievementsButton);

@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.demonhunts.throughit.ThroughIt;
 import com.demonhunts.throughit.helpers.AssetLoader;
@@ -38,7 +39,10 @@ public class MainScreen implements Screen,InputProcessor {
 
     public MainScreen(final ThroughIt gam){
         this.game=gam;
-        game.playServices.signIn();
+
+        if(game.isPlayServices)
+            game.playServices.signIn();
+
         camera = new OrthographicCamera();
         camera.setToOrtho(false, appWidth, appHeight);
         batch = new SpriteBatch();
@@ -46,7 +50,7 @@ public class MainScreen implements Screen,InputProcessor {
         buttonAtlas = AssetLoader.buttonAtlas;
         buttonSkin = new Skin();
         buttonSkin.addRegions(buttonAtlas);
-        stage = new Stage(new FitViewport(appWidth,appHeight));
+        stage = new Stage(new FillViewport(appWidth,appHeight));
         stage.clear();
 
         InputMultiplexer plex = new InputMultiplexer();
@@ -76,7 +80,8 @@ public class MainScreen implements Screen,InputProcessor {
             public void clicked(InputEvent event, float x, float y){
 //                if(prefs.getBoolean("soundOn",true))
 //                    clickSound.play();
-                game.playServices.showScore();
+                if(game.isPlayServices)
+                    game.playServices.showScore();
             }
         });
         stage.addActor(leaderboardButton);
@@ -89,7 +94,8 @@ public class MainScreen implements Screen,InputProcessor {
             public void clicked(InputEvent event, float x, float y){
 //                if(prefs.getBoolean("soundOn",true))
 //                    clickSound.play();
-                game.playServices.showAchievement();
+                if(game.isPlayServices)
+                    game.playServices.showAchievement();
             }
         });
         stage.addActor(achievementsButton);
@@ -102,7 +108,8 @@ public class MainScreen implements Screen,InputProcessor {
             public void clicked(InputEvent event, float x, float y){
 //                if(prefs.getBoolean("soundOn",true))
 //                    clickSound.play();
-                game.playServices.rateGame();
+                if(game.isPlayServices)
+                    game.playServices.rateGame();
             }
         });
         stage.addActor(rateButton);

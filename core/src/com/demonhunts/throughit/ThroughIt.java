@@ -9,10 +9,16 @@ import com.demonhunts.throughit.screens.MainScreen;
 public class ThroughIt extends Game {
 
     public static PlayServices playServices;
+    public static boolean isPlayServices;
 
     public ThroughIt(PlayServices playServices)
     {
         this.playServices = playServices;
+        this.isPlayServices = true;
+    }
+
+    public ThroughIt(boolean isPlayServices){
+        this.isPlayServices = isPlayServices;
     }
 
     @Override

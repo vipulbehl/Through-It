@@ -5,71 +5,36 @@ filter: Nearest,Nearest
 repeat: none
 bottom
   rotate: false
-  xy: 1, 957
+  xy: 1, 890
   size: 1000, 49
   orig: 1000, 49
   offset: 0, 0
   index: -1
-bamboo
+backgroung
   rotate: false
-  xy: 1, 503
-  size: 236, 452
-  orig: 236, 452
-  offset: 0, 0
-  index: -1
-pipe
-  rotate: false
-  xy: 1, 1
-  size: 60, 500
-  orig: 60, 500
+  xy: 1, 411
+  size: 337, 477
+  orig: 337, 477
   offset: 0, 0
   index: -1
 back
   rotate: false
-  xy: 239, 757
-  size: 272, 198
-  orig: 272, 198
-  offset: 0, 0
-  index: -1
-dot
-  rotate: false
-  xy: 239, 543
-  size: 212, 212
-  orig: 212, 212
-  offset: 0, 0
-  index: -1
-bambooCluster
-  rotate: false
-  xy: 63, 347
-  size: 78, 154
-  orig: 78, 154
-  offset: 0, 0
-  index: -1
-playButton
-  rotate: false
-  xy: 513, 855
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
-  index: -1
-playButtonClicked
-  rotate: false
-  xy: 513, 855
-  size: 100, 100
-  orig: 100, 100
+  xy: 1, 1
+  size: 272, 408
+  orig: 272, 408
   offset: 0, 0
   index: -1
 ball
   rotate: false
-  xy: 615, 855
+  xy: 340, 788
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 pipe1
   rotate: false
-  xy: 513, 784
-  size: 100, 69
-  orig: 100, 69
+  xy: 1003, 919
+  size: 20, 20
+  orig: 20, 20
   offset: 0, 0
   index: -1

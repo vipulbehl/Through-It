@@ -10,6 +10,6 @@ public class DesktopLauncher {
 		config.title="Through It";
         config.width=272;
         config.height=408;
-		new LwjglApplication(new ThroughIt(), config);
+		new LwjglApplication(new ThroughIt(false), config);
 	}
 }

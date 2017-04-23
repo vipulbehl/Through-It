@@ -51,7 +51,7 @@ public class GameRenderer {
         this.gameHeight = gameHeight;
 
         cam = new OrthographicCamera();
-        cam.setToOrtho(true,136,204);
+        cam.setToOrtho(true,136,215);
 
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setProjectionMatrix(cam.combined);
@@ -60,6 +60,7 @@ public class GameRenderer {
         batcher.setProjectionMatrix(cam.combined);
 
         fontHelper = new FontHelper();
+        bg = AssetLoader.bg;
         initGameObjects();
         initAssets();
     }
@@ -86,7 +87,7 @@ public class GameRenderer {
 
         batcher.begin();
         batcher.disableBlending();
-        batcher.draw(AssetLoader.bg, 0, 0, 272, 408);
+        batcher.draw(bg, 0, 0, bg.getRegionWidth(), bg.getRegionHeight());
         batcher.enableBlending();
         batcher.draw(AssetLoader.dot,dot.getX(),dot.getY(),dot.getWidth(),dot.getHeight());
 
@@ -111,7 +112,10 @@ public class GameRenderer {
             }
 
             String score = myWorld.getScore() + "";
-            game.playServices.unlockAchievement(myWorld.getScore());
+
+            if(game.isPlayServices)
+                game.playServices.unlockAchievement(myWorld.getScore());
+
             AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2) - (3 * score.length() - 1), 11);
         }
 
@@ -141,19 +145,19 @@ public class GameRenderer {
     }
 
     private void drawPipes() {
-        batcher.draw(bar, pipe1.getX(), pipe1.getY(), pipe1.getWidth()+12,
+        batcher.draw(bar, pipe1.getX(), pipe1.getY(), pipe1.getWidth(),
                 pipe1.getHeight());
         batcher.draw(bar, pipe1.getX(), pipe1.getY() + pipe1.getHeight() + 45,
-                pipe1.getWidth()+12, midPointY +   (pipe1.getHeight() +45));
+                pipe1.getWidth(), midPointY +   (pipe1.getHeight() +45));
 
-        batcher.draw(bar, pipe2.getX(), pipe2.getY(), pipe2.getWidth()+12,
+        batcher.draw(bar, pipe2.getX(), pipe2.getY(), pipe2.getWidth(),
                 pipe2.getHeight());
         batcher.draw(bar, pipe2.getX(), pipe2.getY() + pipe2.getHeight() + 45,
-                pipe2.getWidth()+12, midPointY + (pipe2.getHeight()+45 ));
+                pipe2.getWidth(), midPointY + (pipe2.getHeight()+45 ));
 
-        batcher.draw(bar, pipe3.getX(), pipe3.getY(), pipe3.getWidth()+12,
+        batcher.draw(bar, pipe3.getX(), pipe3.getY(), pipe3.getWidth(),
                 pipe3.getHeight());
         batcher.draw(bar, pipe3.getX(), pipe3.getY() + pipe3.getHeight() + 45,
-                pipe3.getWidth()+12, midPointY +  (pipe3.getHeight() +45));
+                pipe3.getWidth(), midPointY +  (pipe3.getHeight() +45));
     }
 }

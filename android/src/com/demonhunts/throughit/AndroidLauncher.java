@@ -3,7 +3,6 @@ package com.demonhunts.throughit;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.RelativeLayout;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.android.AndroidApplication;
