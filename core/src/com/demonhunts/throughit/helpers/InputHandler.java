@@ -1,9 +1,6 @@
 package com.demonhunts.throughit.helpers;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector3;
 import com.demonhunts.throughit.gameobjects.Dot;
 import com.demonhunts.throughit.gameworld.GameWorld;
 
@@ -42,7 +39,7 @@ public class InputHandler implements InputProcessor {
         myDot.onClick();
 
         if (myWorld.isGameOver()) {
-            myWorld.restart();
+            //myWorld.restart();
         }
         return true;
     }
