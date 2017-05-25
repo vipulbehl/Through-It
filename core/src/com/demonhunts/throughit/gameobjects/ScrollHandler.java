@@ -5,7 +5,6 @@ import com.demonhunts.throughit.helpers.AssetLoader;
 
 public class ScrollHandler {
 
-    private Grass frontGrass, backGrass;
     private Pipe pipe1, pipe2, pipe3;
     public static final int SCROLL_SPEED = -80;
     public static final int PIPE_GAP = 109;
@@ -13,10 +12,6 @@ public class ScrollHandler {
 
     public ScrollHandler(GameWorld gameWorld,float yPos) {
         this.gameWorld = gameWorld;
-        frontGrass = new Grass(0, yPos, 143, 11, SCROLL_SPEED);
-        backGrass = new Grass(frontGrass.getTailX(), yPos, 143, 11,
-                SCROLL_SPEED);
-
         pipe1 = new Pipe(210, 0, 22, 60, SCROLL_SPEED, yPos);
         pipe2 = new Pipe(pipe1.getTailX() + PIPE_GAP, 0, 22, 70, SCROLL_SPEED,
                 yPos);
@@ -25,8 +20,6 @@ public class ScrollHandler {
     }
 
     public void update(float delta) {
-        frontGrass.update(delta);
-        backGrass.update(delta);
         pipe1.update(delta);
         pipe2.update(delta);
         pipe3.update(delta);
@@ -39,27 +32,15 @@ public class ScrollHandler {
         } else if (pipe3.isScrolledLeft()) {
             pipe3.reset(pipe2.getTailX() + PIPE_GAP);
         }
-
-        if (frontGrass.isScrolledLeft()) {
-            frontGrass.reset(backGrass.getTailX());
-
-        } else if (backGrass.isScrolledLeft()) {
-            backGrass.reset(frontGrass.getTailX());
-
-        }
     }
 
     public void stop() {
-        frontGrass.stop();
-        backGrass.stop();
         pipe1.stop();
         pipe2.stop();
         pipe3.stop();
     }
 
     public void onRestart() {
-        frontGrass.onRestart(0, SCROLL_SPEED);
-        backGrass.onRestart(frontGrass.getTailX(), SCROLL_SPEED);
         pipe1.onRestart(210, SCROLL_SPEED);
         pipe2.onRestart(pipe1.getTailX() + PIPE_GAP, SCROLL_SPEED);
         pipe3.onRestart(pipe2.getTailX() + PIPE_GAP, SCROLL_SPEED);
@@ -91,14 +72,6 @@ public class ScrollHandler {
 
     private void addScore(int increment) {
         gameWorld.addScore(increment);
-    }
-
-    public Grass getFrontGrass() {
-        return frontGrass;
-    }
-
-    public Grass getBackGrass() {
-        return backGrass;
     }
 
     public Pipe getPipe1() {

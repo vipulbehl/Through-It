@@ -47,7 +47,7 @@ public class AssetLoader {
         playbutton = atlas.findRegion("playButton");
 
 
-        bg = atlas.findRegion("back");
+        bg = atlas.findRegion("background");
         bg.flip(false, true);
 
         grass = atlas.findRegion("bottom");

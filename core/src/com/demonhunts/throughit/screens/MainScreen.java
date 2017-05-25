@@ -86,7 +86,9 @@ public class MainScreen implements Screen,InputProcessor {
                     game.playServices.showScore();
             }
         });
-        stage.addActor(leaderboardButton);
+
+        if(game.isPlayServices)
+            stage.addActor(leaderboardButton);
 
         //Achievements Button resources
         achievementsButton = new ImageButton(buttonSkin.getDrawable("achievements"),buttonSkin.getDrawable("achievementsClicked"));
@@ -100,7 +102,8 @@ public class MainScreen implements Screen,InputProcessor {
                     game.playServices.showAchievement();
             }
         });
-        stage.addActor(achievementsButton);
+        if(game.isPlayServices)
+            stage.addActor(achievementsButton);
 
         //Rate Button Resource
         rateButton = new ImageButton(buttonSkin.getDrawable("rate"),buttonSkin.getDrawable("rate"));

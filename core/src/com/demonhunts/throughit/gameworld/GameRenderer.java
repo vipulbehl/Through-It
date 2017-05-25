@@ -4,24 +4,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.demonhunts.throughit.ThroughIt;
 import com.demonhunts.throughit.gameobjects.Dot;
-import com.demonhunts.throughit.helpers.AssetLoader;
-import com.demonhunts.throughit.gameobjects.ScrollHandler;
 import com.demonhunts.throughit.gameobjects.Pipe;
-import com.demonhunts.throughit.gameobjects.Grass;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.demonhunts.throughit.gameobjects.ScrollHandler;
+import com.demonhunts.throughit.helpers.AssetLoader;
 import com.demonhunts.throughit.helpers.FontHelper;
 import com.demonhunts.throughit.screens.EndScreen;
-import com.demonhunts.throughit.screens.GameScreen;
 
 
 public class GameRenderer {
@@ -34,10 +27,9 @@ public class GameRenderer {
 
     private Dot dot;
     private ScrollHandler scroller;
-    private Grass frontGrass, backGrass;
     private Pipe pipe1, pipe2, pipe3;
 
-    private TextureRegion bg, grass;
+    private TextureRegion bg;
     private TextureRegion bar;
     long currentTime;
 
@@ -79,7 +71,6 @@ public class GameRenderer {
         // Draw Background color
         shapeRenderer.rect(0, 0, 136, midPointY + 66);
 
-        // Draw Grass
         shapeRenderer.setColor(111 / 255.0f, 186 / 255.0f, 45 / 255.0f, 1);
         shapeRenderer.rect(0, midPointY + 66, 136, 11);
 
@@ -94,10 +85,8 @@ public class GameRenderer {
         batcher.enableBlending();
         batcher.draw(AssetLoader.dot,dot.getX(),dot.getY(),dot.getWidth(),dot.getHeight());
 
-        drawGrass();
         drawPipes();
         batcher.enableBlending();
-
 
 
         if (myWorld.isReady()) {
@@ -128,8 +117,6 @@ public class GameRenderer {
     private void initGameObjects() {
         dot = myWorld.getDot();
         scroller = myWorld.getScroller();
-        frontGrass = scroller.getFrontGrass();
-        backGrass = scroller.getBackGrass();
         pipe1 = scroller.getPipe1();
         pipe2 = scroller.getPipe2();
         pipe3 = scroller.getPipe3();
@@ -137,15 +124,7 @@ public class GameRenderer {
 
     private void initAssets() {
         bg = AssetLoader.bg;
-        grass = AssetLoader.grass;
         bar = AssetLoader.bar;
-    }
-
-    private void drawGrass() {
-        batcher.draw(grass, frontGrass.getX(), gameHeight-11,
-                frontGrass.getWidth(), frontGrass.getHeight());
-        batcher.draw(grass, backGrass.getX(), gameHeight-11,
-                backGrass.getWidth(), backGrass.getHeight());
     }
 
     private void drawPipes() {
