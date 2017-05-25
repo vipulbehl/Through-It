@@ -7,15 +7,19 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 public class AssetLoader {
     public static Texture texture;
     public static TextureRegion bg, grass,playButtonUp,playButtonDown;
-    public static BitmapFont font,endfont;
+
+    public static FreeTypeFontGenerator generator;
+    public static FreeTypeFontGenerator.FreeTypeFontParameter parameter,parameter1;
+    public static BitmapFont fontS,fontB;
 
     public static TextureAtlas atlas,buttonAtlas;
 
-    public static TextureRegion dot,playbutton;
+    public static TextureRegion dot;
     public static TextureRegion bar;
 
     public static Preferences prefs;
@@ -30,21 +34,21 @@ public class AssetLoader {
         playButtonUp.flip(false, true);
         playButtonDown.flip(false, true);
 
+        generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/lunchds.ttf"));
+        parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.color = Color.BROWN;
+        parameter.size = 15;
+        fontB = generator.generateFont(parameter);
 
-        font = new BitmapFont(Gdx.files.internal("text.fnt"));
-        font.setColor(Color.BLACK);
-        font.getData().setScale(0.5f,-.5f);
-
-        endfont = new BitmapFont(Gdx.files.internal("text.fnt"),true);
-        endfont.setColor(Color.BLACK);
-        endfont.getData().setScale(0.5f,-.5f);
+        parameter1 = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter1.color = Color.BROWN;
+        parameter1.size = 12;
+        fontS = generator.generateFont(parameter1);
 
         buttonAtlas = new TextureAtlas("buttons.pack");
         atlas = new TextureAtlas("images.pack");
         dot = atlas.findRegion("ball");
         dot.flip(false, true);
-
-        playbutton = atlas.findRegion("playButton");
 
 
         bg = atlas.findRegion("background");
@@ -53,7 +57,6 @@ public class AssetLoader {
         grass = atlas.findRegion("bottom");
         grass.flip(false, true);
 
-//        bar = new TextureRegion(texture, 136, 16, 22, 3);
         bar = atlas.findRegion("pipe1");
         bar.flip(false, true);
 
@@ -62,13 +65,11 @@ public class AssetLoader {
             prefs.putInteger("highScore",0);
         }
 
-
-
-
     }
 
     public static void dispose() {
-        font.dispose();
+        fontS.dispose();
+        fontB.dispose();
         texture.dispose();
     }
 

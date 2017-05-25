@@ -38,7 +38,7 @@ public class SplashScreen implements Screen {
 
         batch.begin();
         batch.draw(splashImage,appWidth/2-splashImage.getWidth()/2,appHeight/2-splashImage.getHeight()/2);
-        AssetLoader.font.draw(batch,"Demon Hunts",appWidth/2,appHeight/3);
+        AssetLoader.fontB.draw(batch,"Demon Hunts",appWidth/2,appHeight/3);
         batch.end();
 
         if(TimeUtils.millis() - startTime > 2000);

@@ -3,8 +3,10 @@ package com.demonhunts.throughit.gameworld;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -37,6 +39,8 @@ public class GameRenderer {
     private int gameHeight;
 
     private FontHelper fontHelper;
+    private FreeTypeFontGenerator.FreeTypeFontParameter parameter,parameter1;
+    public static BitmapFont fontS,fontB;
 
     public GameRenderer(GameWorld world, int gameHeight, int midPointY, final ThroughIt game){
         myWorld = world;
@@ -56,6 +60,14 @@ public class GameRenderer {
         currentTime = TimeUtils.millis();
         fontHelper = new FontHelper();
         bg = AssetLoader.bg;
+
+        parameter = AssetLoader.parameter;
+        parameter.flip = true;
+        fontS = AssetLoader.generator.generateFont(parameter);
+        parameter1 = AssetLoader.parameter1;
+        parameter1.flip = true;
+        fontB = AssetLoader.generator.generateFont(parameter1);
+
         initGameObjects();
         initAssets();
     }
@@ -90,13 +102,13 @@ public class GameRenderer {
 
 
         if (myWorld.isReady()) {
-            AssetLoader.font.draw(batcher, "Touch me", fontHelper.centerAlign("Touch me"), 75);
+            fontB.draw(batcher, "Touch me", fontHelper.centerAlign("Touch me"), 75);
         } else {
 
             if (myWorld.isGameOver()) {
-                AssetLoader.font.draw(batcher, "Game Over", fontHelper.centerAlign("Game Over"), 85);
+                fontB.draw(batcher, "Game Over", fontHelper.centerAlign("Game Over"), 85);
 
-                if(TimeUtils.millis() - currentTime > 2000)
+                if(TimeUtils.millis() - currentTime > 1000)
                     game.setScreen(new EndScreen(game,myWorld.getScore()));
 
             }
@@ -106,7 +118,7 @@ public class GameRenderer {
             if(game.isPlayServices)
                 game.playServices.unlockAchievement(myWorld.getScore());
 
-            AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2) - (3 * score.length() - 1), 11);
+            fontS.draw(batcher, "" + myWorld.getScore(), (136 / 2) - (3 * score.length() - 1), 11);
         }
 
         batcher.end();

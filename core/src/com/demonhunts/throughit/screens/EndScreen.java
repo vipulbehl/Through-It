@@ -69,13 +69,13 @@ public class EndScreen implements Screen,InputProcessor {
             game.playServices.submitScore(score);
 
         layoutGameOver = new GlyphLayout();
-        layoutGameOver.setText(AssetLoader.endfont,"Game Over");
+        layoutGameOver.setText(AssetLoader.fontB,"Game Over");
 
         layoutYourScore = new GlyphLayout();
-        layoutYourScore.setText(AssetLoader.endfont,scoreString);
+        layoutYourScore.setText(AssetLoader.fontS,scoreString);
 
         layoutHighScore = new GlyphLayout();
-        layoutHighScore.setText(AssetLoader.endfont,highScoreString);
+        layoutHighScore.setText(AssetLoader.fontS,highScoreString);
 
 
         //Play Button resources
@@ -146,9 +146,9 @@ public class EndScreen implements Screen,InputProcessor {
         batch.end();
 
         batch.begin();
-        AssetLoader.endfont.draw(batch,"GAME OVER",appWidth/2-layoutGameOver.width/2,heightPercent(90));
-        AssetLoader.endfont.draw(batch,scoreString,appWidth/2-layoutYourScore.width/2,heightPercent(80));
-        AssetLoader.endfont.draw(batch,highScoreString,appWidth/2-layoutHighScore.width/2,heightPercent(70));
+        AssetLoader.fontB.draw(batch,"GAME OVER",appWidth/2-layoutGameOver.width/2,heightPercent(90));
+        AssetLoader.fontS.draw(batch,scoreString,appWidth/2-layoutYourScore.width/2,heightPercent(80));
+        AssetLoader.fontS.draw(batch,highScoreString,appWidth/2-layoutHighScore.width/2,heightPercent(70));
         batch.end();
     }
 
