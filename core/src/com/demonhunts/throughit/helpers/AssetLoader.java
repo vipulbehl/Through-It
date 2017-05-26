@@ -34,7 +34,7 @@ public class AssetLoader {
         playButtonUp.flip(false, true);
         playButtonDown.flip(false, true);
 
-        generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/lunchds.ttf"));
+        generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Play-Bold.ttf"));
         parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.color = Color.BROWN;
         parameter.size = 15;

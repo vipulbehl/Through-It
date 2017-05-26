@@ -22,6 +22,8 @@ public class ThroughIt extends Game {
         this.isPlayServices = isPlayServices;
     }
 
+
+
     @Override
     public void create() {
         AssetLoader.load();
