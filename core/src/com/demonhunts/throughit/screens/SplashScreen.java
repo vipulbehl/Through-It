@@ -12,8 +12,8 @@ import com.demonhunts.throughit.helpers.AssetLoader;
 
 public class SplashScreen implements Screen {
     final ThroughIt game;
-    final float appWidth = 136;
-    final float appHeight = 204;
+    final float appWidth = 768;
+    final float appHeight = 1280;
     SpriteBatch batch;
     OrthographicCamera camera;
     Texture splashImage;
@@ -38,7 +38,7 @@ public class SplashScreen implements Screen {
 
         batch.begin();
         batch.draw(splashImage,appWidth/2-splashImage.getWidth()/2,appHeight/2-splashImage.getHeight()/2);
-        AssetLoader.fontB.draw(batch,"Demon Hunts",appWidth/2,appHeight/3);
+        AssetLoader.fontB.draw(batch,"Demon Hunts",appWidth/6,appHeight/3);
         batch.end();
 
         if(TimeUtils.millis() - startTime > 2000);

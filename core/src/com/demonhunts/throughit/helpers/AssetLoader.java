@@ -37,12 +37,12 @@ public class AssetLoader {
         generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Play-Bold.ttf"));
         parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.color = Color.BROWN;
-        parameter.size = 15;
+        parameter.size = 105;
         fontB = generator.generateFont(parameter);
 
         parameter1 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter1.color = Color.BROWN;
-        parameter1.size = 12;
+        parameter1.size = 80;
         fontS = generator.generateFont(parameter1);
 
         buttonAtlas = new TextureAtlas("buttons.pack");
