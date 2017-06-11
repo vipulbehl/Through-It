@@ -60,14 +60,15 @@ public class MainScreen implements Screen,InputProcessor {
         plex.addProcessor(stage);
         Gdx.input.setInputProcessor(plex);
         prefs = Gdx.app.getPreferences("My Preferences");
-//        clickSound = game.assets.getSound();
+        clickSound = AssetLoader.clickSound;
 
         //Play Button resources
         playButton = new ImageButton(buttonSkin.getDrawable("play"),buttonSkin.getDrawable("playClicked"));
-//        playButton.setSize(50,20);
         playButton.setPosition(appWidth/2-playButton.getWidth()/2,appHeight/2-playButton.getHeight()/2);
         playButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
+                if(prefs.getBoolean("soundOn",true))
+                    clickSound.play();
                 game.setScreen(new GameScreen(game));
             }
         });
@@ -76,12 +77,11 @@ public class MainScreen implements Screen,InputProcessor {
 
         //Leaderboard Button resources
         leaderboardButton = new ImageButton(buttonSkin.getDrawable("leaderboard"),buttonSkin.getDrawable("leaderboardClicked"));
-//        leaderboardButton.setSize(50,20);
         leaderboardButton.setPosition(widthPercent(30)-leaderboardButton.getWidth()/2,heightPercent(30));
         leaderboardButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
-//                if(prefs.getBoolean("soundOn",true))
-//                    clickSound.play();
+                if(prefs.getBoolean("soundOn",true))
+                    clickSound.play();
                 if(game.isPlayServices)
                     game.playServices.showScore();
             }
@@ -92,12 +92,11 @@ public class MainScreen implements Screen,InputProcessor {
 
         //Achievements Button resources
         achievementsButton = new ImageButton(buttonSkin.getDrawable("achievements"),buttonSkin.getDrawable("achievementsClicked"));
-//        achievementsButton.setSize(50,20);
         achievementsButton.setPosition(widthPercent(70)-achievementsButton.getWidth()/2,heightPercent(30));
         achievementsButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
-//                if(prefs.getBoolean("soundOn",true))
-//                    clickSound.play();
+                if(prefs.getBoolean("soundOn",true))
+                    clickSound.play();
                 if(game.isPlayServices)
                     game.playServices.showAchievement();
             }
@@ -107,12 +106,11 @@ public class MainScreen implements Screen,InputProcessor {
 
         //Rate Button Resource
         rateButton = new ImageButton(buttonSkin.getDrawable("rate"),buttonSkin.getDrawable("rate"));
-//        rateButton.setSize(15,15);
         rateButton.setPosition(widthPercent(53),heightPercent(18));
         rateButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
-//                if(prefs.getBoolean("soundOn",true))
-//                    clickSound.play();
+                if(prefs.getBoolean("soundOn",true))
+                    clickSound.play();
                 if(game.isPlayServices)
                     game.playServices.rateGame();
             }
@@ -128,19 +126,18 @@ public class MainScreen implements Screen,InputProcessor {
                     buttonSkin.getDrawable("soundEnable"));
 
         soundButton.setPosition(widthPercent(37),heightPercent(18));
-//        soundButton.setSize(15,15);
         soundButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
                 if(prefs.getBoolean("soundOn",true)){
-//                    clickSound.play();
+                    clickSound.play();
                     prefs.putBoolean("soundOn",false);
                     soundButton.setChecked(true);
-                    //soundButton.setBackground(buttonSkin.getDrawable("soundDisable"));
+                    soundButton.setBackground(buttonSkin.getDrawable("soundDisable"));
                 }
                 else{
                     prefs.putBoolean("soundOn",true);
                     soundButton.setChecked(false);
-                    //soundButton.setBackground(buttonSkin.getDrawable("soundEnable"));
+                    soundButton.setBackground(buttonSkin.getDrawable("soundEnable"));
                 }
                 prefs.flush();
             }
@@ -159,7 +156,7 @@ public class MainScreen implements Screen,InputProcessor {
         batch.end();
 
         batch.begin();
-        AssetLoader.fontB.draw(batch,"Through It",appWidth/4,heightPercent(65));
+        AssetLoader.fontB.draw(batch,"Through It",appWidth/5,heightPercent(65));
         batch.end();
     }
 

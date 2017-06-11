@@ -16,7 +16,7 @@ public class GameScreen implements Screen {
     public GameScreen(final ThroughIt game) {
         float screenWidth = Gdx.graphics.getWidth();
         float screenHeight = Gdx.graphics.getHeight();
-        float gameWidth = 768;
+        float gameWidth = 136;
         float gameHeight = screenHeight/(screenWidth/gameWidth);
         int midPoint = (int) gameHeight/2;
 

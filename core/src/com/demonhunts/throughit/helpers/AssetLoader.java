@@ -2,6 +2,7 @@ package com.demonhunts.throughit.helpers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -10,12 +11,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 public class AssetLoader {
-    public static Texture texture;
-    public static TextureRegion bg, grass,playButtonUp,playButtonDown;
+    public static TextureRegion bg, grass;
 
     public static FreeTypeFontGenerator generator;
-    public static FreeTypeFontGenerator.FreeTypeFontParameter parameter,parameter1;
-    public static BitmapFont fontS,fontB;
+    public static FreeTypeFontGenerator.FreeTypeFontParameter parameter,parameter1,parameter2;
+    public static BitmapFont fontS,fontB,fontGame;
 
     public static TextureAtlas atlas,buttonAtlas;
 
@@ -24,17 +24,11 @@ public class AssetLoader {
 
     public static Preferences prefs;
 
+    public static Sound passSound,clickSound,gameOverSound;
+
     public static void load() {
 
-        texture = new Texture(Gdx.files.internal("texture.png"));
-        texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
-
-        playButtonUp = new TextureRegion(texture, 0, 83, 29, 16);
-        playButtonDown = new TextureRegion(texture, 29, 83, 29, 16);
-        playButtonUp.flip(false, true);
-        playButtonDown.flip(false, true);
-
-        generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Play-Bold.ttf"));
+        generator = new FreeTypeFontGenerator(Gdx.files.internal("Play-Bold.ttf"));
         parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.color = Color.BROWN;
         parameter.size = 105;
@@ -44,6 +38,12 @@ public class AssetLoader {
         parameter1.color = Color.BROWN;
         parameter1.size = 80;
         fontS = generator.generateFont(parameter1);
+
+
+        parameter2 = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter2.color = Color.BROWN;
+        parameter2.size = 20;
+        fontGame = generator.generateFont(parameter2);
 
         buttonAtlas = new TextureAtlas("buttons.pack");
         atlas = new TextureAtlas("images.pack");
@@ -65,12 +65,14 @@ public class AssetLoader {
             prefs.putInteger("highScore",0);
         }
 
+        passSound = Gdx.audio.newSound(Gdx.files.internal("passSound.mp3"));
+        clickSound = Gdx.audio.newSound(Gdx.files.internal("clickSound.wav"));
+        gameOverSound = Gdx.audio.newSound(Gdx.files.internal("gameOverSound.wav"));
     }
 
     public static void dispose() {
         fontS.dispose();
         fontB.dispose();
-        texture.dispose();
     }
 
     public static void setHighScore(int score){

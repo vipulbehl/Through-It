@@ -27,7 +27,7 @@ public class ThroughIt extends Game {
     @Override
     public void create() {
         AssetLoader.load();
-        this.setScreen(new SplashScreen(this));
+        this.setScreen(new MainScreen(this));
     }
 
     @Override

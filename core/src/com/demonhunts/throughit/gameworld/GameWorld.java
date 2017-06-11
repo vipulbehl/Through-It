@@ -1,5 +1,7 @@
 package com.demonhunts.throughit.gameworld;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.demonhunts.throughit.gameobjects.ScrollHandler;
@@ -104,6 +106,9 @@ public class GameWorld {
         if(AssetLoader.getHighScore() < score){
             AssetLoader.setHighScore(score);
         }
+        Preferences prefs = Gdx.app.getPreferences("My Preferences");
+        if(prefs.getBoolean("soundOn",true))
+            AssetLoader.passSound.play();
     }
 
     public ScrollHandler getScroller() {
