@@ -65,7 +65,7 @@ public class AssetLoader {
             prefs.putInteger("highScore",0);
         }
 
-        passSound = Gdx.audio.newSound(Gdx.files.internal("passSound.mp3"));
+        passSound = Gdx.audio.newSound(Gdx.files.internal("passSound.wav"));
         clickSound = Gdx.audio.newSound(Gdx.files.internal("clickSound.wav"));
         gameOverSound = Gdx.audio.newSound(Gdx.files.internal("gameOverSound.wav"));
     }

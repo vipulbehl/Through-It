@@ -40,7 +40,7 @@ public class GameRenderer {
     private int gameHeight;
 
     private FontHelper fontHelper;
-    private FreeTypeFontGenerator.FreeTypeFontParameter parameter,parameter1;
+    private FreeTypeFontGenerator.FreeTypeFontParameter parameter;
     public static BitmapFont fontGame;
 
     public GameRenderer(GameWorld world, int gameHeight, int midPointY, final ThroughIt game){
@@ -65,10 +65,6 @@ public class GameRenderer {
         parameter = AssetLoader.parameter2;
         parameter.flip = true;
         fontGame = AssetLoader.generator.generateFont(parameter);
-//        parameter1 = AssetLoader.parameter1;
-//        parameter1.flip = true;
-//        fontS = AssetLoader.generator.generateFont(parameter1);
-
         initGameObjects();
         initAssets();
     }
@@ -111,7 +107,7 @@ public class GameRenderer {
 
                 Preferences prefs = Gdx.app.getPreferences("My Preferences");
                 if(prefs.getBoolean("soundOn",true))
-                    AssetLoader.gameOverSound.loop(2);
+                    game.gameOverSound.play();
 
                 if(TimeUtils.millis() - currentTime > 1000)
                     game.setScreen(new EndScreen(game,myWorld.getScore()));

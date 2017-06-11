@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
+import com.demonhunts.throughit.ThroughIt;
 import com.demonhunts.throughit.gameobjects.ScrollHandler;
 import com.demonhunts.throughit.gameobjects.Dot;
 import com.demonhunts.throughit.helpers.AssetLoader;
@@ -16,6 +17,7 @@ public class GameWorld {
     private Rectangle ceiling;
     private int score;
     public int midPointY;
+    private ThroughIt game;
 
     private GameState currentState;
 
@@ -23,13 +25,14 @@ public class GameWorld {
         READY,RUNNING,GAMEOVER
     }
 
-    public GameWorld(int midPointY) {
+    public GameWorld(int midPointY, ThroughIt game) {
         currentState = GameState.READY;
         dot = new Dot(33,midPointY-9,17,17);
         scroller = new ScrollHandler(this,midPointY + 66);
         ground = new Rectangle(0,midPointY*2-11,136,11);
         ceiling = new Rectangle(0,0,136,0);
         this.midPointY = midPointY;
+        this.game = game;
     }
 
     public void update(float delta) {
@@ -108,7 +111,7 @@ public class GameWorld {
         }
         Preferences prefs = Gdx.app.getPreferences("My Preferences");
         if(prefs.getBoolean("soundOn",true))
-            AssetLoader.passSound.play();
+            game.passSound.play();
     }
 
     public ScrollHandler getScroller() {

@@ -60,7 +60,7 @@ public class EndScreen implements Screen,InputProcessor {
         plex.addProcessor(this);
         Gdx.input.setInputProcessor(plex);
         prefs = Gdx.app.getPreferences("My Preferences");
-        clickSound = AssetLoader.clickSound;
+        clickSound = game.clickSound;
 
         scoreString = "Score : "+score;
         highScoreString = "Best : "+AssetLoader.getHighScore();

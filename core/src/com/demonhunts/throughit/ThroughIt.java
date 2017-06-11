@@ -1,6 +1,7 @@
 package com.demonhunts.throughit;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.audio.Sound;
 import com.demonhunts.throughit.helpers.AssetLoader;
 import com.demonhunts.throughit.helpers.PlayServices;
 import com.demonhunts.throughit.screens.GameScreen;
@@ -11,6 +12,7 @@ public class ThroughIt extends Game {
 
     public static PlayServices playServices;
     public static boolean isPlayServices;
+    public static Sound clickSound,passSound,gameOverSound;
 
     public ThroughIt(PlayServices playServices)
     {
@@ -27,6 +29,9 @@ public class ThroughIt extends Game {
     @Override
     public void create() {
         AssetLoader.load();
+        clickSound = AssetLoader.clickSound;
+        passSound = AssetLoader.passSound;
+        gameOverSound = AssetLoader.gameOverSound;
         this.setScreen(new MainScreen(this));
     }
 

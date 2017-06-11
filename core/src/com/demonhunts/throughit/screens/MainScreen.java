@@ -60,7 +60,7 @@ public class MainScreen implements Screen,InputProcessor {
         plex.addProcessor(stage);
         Gdx.input.setInputProcessor(plex);
         prefs = Gdx.app.getPreferences("My Preferences");
-        clickSound = AssetLoader.clickSound;
+        clickSound = game.clickSound;
 
         //Play Button resources
         playButton = new ImageButton(buttonSkin.getDrawable("play"),buttonSkin.getDrawable("playClicked"));
