@@ -39,7 +39,6 @@ public class GameRenderer {
     private int midPointY;
     private int gameHeight;
 
-    private FontHelper fontHelper;
     private FreeTypeFontGenerator.FreeTypeFontParameter parameter;
     public static BitmapFont fontGame;
 
@@ -59,7 +58,6 @@ public class GameRenderer {
         batcher.setProjectionMatrix(cam.combined);
 
         currentTime = TimeUtils.millis();
-        fontHelper = new FontHelper();
         bg = AssetLoader.bg;
 
         parameter = AssetLoader.parameter2;
@@ -99,15 +97,11 @@ public class GameRenderer {
 
 
         if (myWorld.isReady()) {
-            fontGame.draw(batcher, "Touch me", 20, 75);
+            fontGame.draw(batcher, "Tap .... Tap", 25, 75);
         } else {
 
             if (myWorld.isGameOver()) {
                 fontGame.draw(batcher, "Game Over", 20, 85);
-
-                Preferences prefs = Gdx.app.getPreferences("My Preferences");
-                if(prefs.getBoolean("soundOn",true))
-                    game.gameOverSound.play();
 
                 if(TimeUtils.millis() - currentTime > 1000)
                     game.setScreen(new EndScreen(game,myWorld.getScore()));

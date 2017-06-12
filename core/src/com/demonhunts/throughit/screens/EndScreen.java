@@ -69,7 +69,7 @@ public class EndScreen implements Screen,InputProcessor {
             game.playServices.submitScore(score);
 
         layoutGameOver = new GlyphLayout();
-        layoutGameOver.setText(AssetLoader.fontB,"Game Over");
+        layoutGameOver.setText(AssetLoader.fontS,"Game Over");
 
         layoutYourScore = new GlyphLayout();
         layoutYourScore.setText(AssetLoader.fontS,scoreString);
@@ -80,7 +80,7 @@ public class EndScreen implements Screen,InputProcessor {
 
         //Play Button resources
         playButton = new ImageButton(buttonSkin.getDrawable("play"),buttonSkin.getDrawable("playClicked"));
-        playButton.setPosition(appWidth/2-playButton.getWidth()/2,appHeight/2-playButton.getHeight()/2);
+        playButton.setPosition(appWidth/2-playButton.getWidth()/2,heightPercent(37));
         playButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
                 if(prefs.getBoolean("soundOn",true))
@@ -92,7 +92,7 @@ public class EndScreen implements Screen,InputProcessor {
 
         //Leaderboard Button resources
         leaderboardButton = new ImageButton(buttonSkin.getDrawable("leaderboard"),buttonSkin.getDrawable("leaderboardClicked"));
-        leaderboardButton.setPosition(widthPercent(30)-leaderboardButton.getWidth()/2,heightPercent(30));
+        leaderboardButton.setPosition(widthPercent(30)-leaderboardButton.getWidth()/2,heightPercent(25));
         leaderboardButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
                 if(prefs.getBoolean("soundOn",true))
@@ -106,7 +106,7 @@ public class EndScreen implements Screen,InputProcessor {
 
         //Achievements Button resources
         achievementsButton = new ImageButton(buttonSkin.getDrawable("achievements"),buttonSkin.getDrawable("achievementsClicked"));
-        achievementsButton.setPosition(widthPercent(70)-achievementsButton.getWidth()/2,heightPercent(30));
+        achievementsButton.setPosition(widthPercent(70)-achievementsButton.getWidth()/2,heightPercent(25));
         achievementsButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
                 if(prefs.getBoolean("soundOn",true))
@@ -142,9 +142,9 @@ public class EndScreen implements Screen,InputProcessor {
         batch.end();
 
         batch.begin();
-        AssetLoader.fontB.draw(batch,"GAME OVER",appWidth/2-layoutGameOver.width/2,heightPercent(90));
-        AssetLoader.fontS.draw(batch,scoreString,appWidth/2-layoutYourScore.width/2,heightPercent(80));
-        AssetLoader.fontS.draw(batch,highScoreString,appWidth/2-layoutHighScore.width/2,heightPercent(70));
+        AssetLoader.fontS.draw(batch,"GAME OVER",appWidth/2-layoutGameOver.width/2,heightPercent(80));
+        AssetLoader.fontS.draw(batch,scoreString,appWidth/2-layoutYourScore.width/2,heightPercent(70));
+        AssetLoader.fontS.draw(batch,highScoreString,appWidth/2-layoutHighScore.width/2,heightPercent(60));
         batch.end();
     }
 
@@ -196,10 +196,10 @@ public class EndScreen implements Screen,InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        if(keycode == Input.Keys.BACK){
-            game.setScreen(new MainScreen(game));
-        }
-        return true;
+//        if(keycode == Input.Keys.BACK){
+//            game.setScreen(new MainScreen(game));
+//        }
+        return false;
     }
 
     @Override

@@ -24,7 +24,7 @@ public class AssetLoader {
 
     public static Preferences prefs;
 
-    public static Sound passSound,clickSound,gameOverSound;
+    public static Sound passSound,clickSound;
 
     public static void load() {
 
@@ -42,7 +42,7 @@ public class AssetLoader {
 
         parameter2 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter2.color = Color.BROWN;
-        parameter2.size = 20;
+        parameter2.size = 15;
         fontGame = generator.generateFont(parameter2);
 
         buttonAtlas = new TextureAtlas("buttons.pack");
@@ -67,12 +67,14 @@ public class AssetLoader {
 
         passSound = Gdx.audio.newSound(Gdx.files.internal("passSound.wav"));
         clickSound = Gdx.audio.newSound(Gdx.files.internal("clickSound.wav"));
-        gameOverSound = Gdx.audio.newSound(Gdx.files.internal("gameOverSound.wav"));
     }
 
     public static void dispose() {
         fontS.dispose();
         fontB.dispose();
+        atlas.dispose();
+        passSound.dispose();
+        clickSound.dispose();
     }
 
     public static void setHighScore(int score){

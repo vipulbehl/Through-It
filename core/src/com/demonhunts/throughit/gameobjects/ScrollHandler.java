@@ -12,7 +12,7 @@ public class ScrollHandler {
 
     public ScrollHandler(GameWorld gameWorld,float yPos) {
         this.gameWorld = gameWorld;
-        pipe1 = new Pipe(210, 0, 22, 60, SCROLL_SPEED, yPos);
+        pipe1 = new Pipe(150, 0, 22, 60, SCROLL_SPEED, yPos);
         pipe2 = new Pipe(pipe1.getTailX() + PIPE_GAP, 0, 22, 70, SCROLL_SPEED,
                 yPos);
         pipe3 = new Pipe(pipe2.getTailX() + PIPE_GAP, 0, 22, 60, SCROLL_SPEED,

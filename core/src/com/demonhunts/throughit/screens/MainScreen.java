@@ -64,7 +64,7 @@ public class MainScreen implements Screen,InputProcessor {
 
         //Play Button resources
         playButton = new ImageButton(buttonSkin.getDrawable("play"),buttonSkin.getDrawable("playClicked"));
-        playButton.setPosition(appWidth/2-playButton.getWidth()/2,appHeight/2-playButton.getHeight()/2);
+        playButton.setPosition(appWidth/2-playButton.getWidth()/2,heightPercent(42));
         playButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
                 if(prefs.getBoolean("soundOn",true))
@@ -106,7 +106,7 @@ public class MainScreen implements Screen,InputProcessor {
 
         //Rate Button Resource
         rateButton = new ImageButton(buttonSkin.getDrawable("rate"),buttonSkin.getDrawable("rate"));
-        rateButton.setPosition(widthPercent(53),heightPercent(18));
+        rateButton.setPosition(widthPercent(53),heightPercent(20));
         rateButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
                 if(prefs.getBoolean("soundOn",true))
@@ -125,7 +125,7 @@ public class MainScreen implements Screen,InputProcessor {
             soundButton = new ImageButton(buttonSkin.getDrawable("soundDisable"),buttonSkin.getDrawable("soundEnable"),
                     buttonSkin.getDrawable("soundEnable"));
 
-        soundButton.setPosition(widthPercent(37),heightPercent(18));
+        soundButton.setPosition(widthPercent(37),heightPercent(20));
         soundButton.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
                 if(prefs.getBoolean("soundOn",true)){
@@ -156,7 +156,7 @@ public class MainScreen implements Screen,InputProcessor {
         batch.end();
 
         batch.begin();
-        AssetLoader.fontB.draw(batch,"Through It",appWidth/5,heightPercent(65));
+        AssetLoader.fontB.draw(batch,"Through It",appWidth/6,heightPercent(70));
         batch.end();
     }
 
@@ -207,13 +207,13 @@ public class MainScreen implements Screen,InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        if(keycode == Input.Keys.BACK && backCounter ==2){
-            Gdx.app.exit();
-        }
-        else{
-            backCounter++;
-        }
-        return true;
+//        if(keycode == Input.Keys.BACK && backCounter ==2){
+//            Gdx.app.exit();
+//        }
+//        else{
+//            backCounter++;
+//        }
+        return false;
     }
 
     @Override

@@ -31,7 +31,6 @@ public class ThroughIt extends Game {
         AssetLoader.load();
         clickSound = AssetLoader.clickSound;
         passSound = AssetLoader.passSound;
-        gameOverSound = AssetLoader.gameOverSound;
         this.setScreen(new MainScreen(this));
     }
 
